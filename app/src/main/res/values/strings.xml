@@ -5,4 +5,7 @@
     <string name="data">Data</string>
     <string name="modulo">Módulo</string>
     <string name="tituloNota">Título</string>
+    <string name="modificarNota">Modificar unha nota</string>
+    <string name="cambiarTitulo">Título</string>
+
 </resources>
