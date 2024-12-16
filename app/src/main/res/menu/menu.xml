@@ -2,6 +2,17 @@
 <menu xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:android="http://schemas.android.com/apk/res/android">
 
+    <!-- Asignar nombre de usuario-->
+    <item android:title="Usuario"
+        android:id="@+id/NombreUsuario"
+        app:showAsAction="always"/>
 
-    <item android:title="Item" />
+    <item android:title="Añadir nota"
+        android:id="@+id/AñadirNota"/>
+
+    <item android:title="Eliminar nota"
+        android:id="@+id/EliminarNota"/>
+
+    <item android:title="Cerrar sesión"
+        android:id="@+id/CerrarSesion"/>
 </menu>
