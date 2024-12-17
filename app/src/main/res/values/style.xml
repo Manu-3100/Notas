@@ -3,7 +3,14 @@
         <style name="botones">
             <item name="android:layout_width">wrap_content</item>
             <item name="android:layout_height">wrap_content</item>
-            <item name="cornerRadius">0dp</item>
-            <item name="android:backgroundTint">@color/azul</item>
+            <item name="cornerRadius">10dp</item>
+            <item name="android:backgroundTint">@color/boton2</item>
         </style>
+
+    <style name="editT">
+        <item name="android:layout_width">wrap_content</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="cornerRadius">10dp</item>
+        <item name="android:backgroundTint">@color/transparencia</item>
+    </style>
 </resources>

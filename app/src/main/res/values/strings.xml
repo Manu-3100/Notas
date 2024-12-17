@@ -13,8 +13,8 @@
     <string name="login">LOGIN</string>
     <string name="nome">nome</string>
     <string name="password">contrasinal</string>
-    <string name="rexistrarse">rexistrarse</string>
-    <string name="acceder">acceder</string>
+    <string name="rexistrarse">REXISTRARSE</string>
+    <string name="acceder">ACCEDER</string>
 
 
 </resources>

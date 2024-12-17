@@ -4,6 +4,8 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
+import android.widget.EditText;
+import android.widget.Toast;
 
 import androidx.activity.EdgeToEdge;
 import androidx.appcompat.app.AppCompatActivity;
@@ -19,23 +21,41 @@ public class MainActivity extends AppCompatActivity {
     // lista de la clase Usuario, para guardar los usuarios.
     private List<Usuario> usuariosList;
 
+    // creamos las variables de nombre de usuario.
+    private EditText user;
+    private EditText pass;
+
+
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         EdgeToEdge.enable(this);
         setContentView(R.layout.login);
 
-        Button button = findViewById(R.id.btAcceder);
-        button.setOnClickListener(new View.OnClickListener() {
+        generarListaUsuarios();
+        user = findViewById(R.id.etNome);
+        pass = findViewById(R.id.etPassword);
+
+        Button botonAcceder = findViewById(R.id.btAcceder);
+        botonAcceder.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent = new Intent(MainActivity.this, NotasActivity.class);
-                startActivity(intent);
+                comprobarUsuario();
             }
         });
 
-        generarListaUsuarios();
-       // anadirUsuarios();
+        // evento al clicar en registrar:
+        Button botonRegistrar = findViewById(R.id.btRexistrarse);
+        botonRegistrar.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                anadirUsuario();
+            }
+        });
+
+
+       //
 
         // revisar que los datos introducidos estén bien introducidos.
         // revisar si está registrado o no (mirar si está dentro de la lista)
@@ -45,10 +65,68 @@ public class MainActivity extends AppCompatActivity {
     private void generarListaUsuarios(){
         usuariosList = new ArrayList<>();
         usuariosList.add(new Usuario("nadir","nadir1234"));
-        usuariosList.add(new Usuario("aroa","abc123."));
+        usuariosList.add(new Usuario("Aroa","abc123."));
+    }
+
+    public void comprobarUsuario(){
+        // cogemos la información que nos ha introducido el usuario.
+        String usuario = user.getText().toString();
+        String contrasinal = pass.getText().toString();
+
+        // este toast es por si no completa bien todos los campos.
+        if (usuario.isEmpty() || contrasinal.isEmpty()){
+            Toast.makeText(this, "COMPLETE TODOS OS CAMPOS", Toast.LENGTH_SHORT).show();
+        }
+
+        // recorrer la lista para ver si usuario existe o no y contraseña existen
+        for (Usuario persona : usuariosList){
+            // comprobar si contraseña y usuario son correctos:
+            if (persona.getNome().equals(usuario) && !persona.getContrasinal().equals(contrasinal)) {
+                Toast.makeText(this, "CONTRASINAL INCORRECTO", Toast.LENGTH_SHORT).show();
+            }
+            else if (!persona.getNome().equals(usuario) && persona.getContrasinal().equals(contrasinal)){
+                Toast.makeText(this, "USUARIO INCORRECTO", Toast.LENGTH_SHORT).show();
+            }
+            else if (persona.getNome().equals(usuario) && persona.getContrasinal().equals(contrasinal)){
+                Intent intent = new Intent(MainActivity.this, NotasActivity.class);
+                startActivity(intent);
+
+                Toast.makeText(this, "ACCEDIENDO...", Toast.LENGTH_SHORT).show();
+            }
+            else if (!persona.getNome().equals(usuario) && !persona.getContrasinal().equals(contrasinal)){
+                Toast.makeText(this, "USUARIO NON EXISTE", Toast.LENGTH_SHORT).show();
+            }
+            return;
+        }
+
+        // vaciar los campos de texto
+        user.setText("");
+        pass.setText("");
+
     }
 
     public void anadirUsuario(){
-        // Usuario nuevoUsuario = new Usuario
+        // cogemos la información que nos ha introducido el usuario.
+        String usuario = user.getText().toString();
+        String contrasinal = pass.getText().toString();
+        // este toast es por si no completa bien todos los campos.
+        if (usuario.isEmpty() || contrasinal.isEmpty()){
+            Toast.makeText(this, "COMPLETE TODOS OS CAMPOS", Toast.LENGTH_SHORT).show();
+        }
+
+        // recorremos la lista para comprobar que realmente ese usuario no existe:
+
+        for (Usuario persona : usuariosList){
+            if (!persona.getNome().equals(usuario) && !persona.getContrasinal().equals(contrasinal)){
+                // añadir usuario nuevo a la lista
+                usuariosList.add(new Usuario(usuario,contrasinal));
+
+                Toast.makeText(this, "USUARIO NOVO AÑADIDO", Toast.LENGTH_SHORT).show();
+            }
+        }
+
+        // vaciar los campos de texto
+        user.setText("");
+        pass.setText("");
     }
 }
