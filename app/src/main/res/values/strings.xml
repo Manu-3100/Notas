@@ -7,5 +7,11 @@
     <string name="tituloNota">Título</string>
     <string name="modificarNota">Modificar unha nota</string>
     <string name="cambiarTitulo">Título</string>
+    <string name="login">LOGIN</string>
+    <string name="nome">nome</string>
+    <string name="password">contrasinal</string>
+    <string name="rexistrarse">rexistrarse</string>
+    <string name="acceder">acceder</string>
+
 
 </resources>
