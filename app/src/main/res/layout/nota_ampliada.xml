@@ -44,15 +44,14 @@
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/cambiarTitulo" />
 
-        <Spinner
-            android:id="@+id/escollerModulo"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_margin="16dp"
-            android:layout_marginBottom="10dp"
+        <EditText
+            android:id="@+id/dfModulo"
+            android:layout_width="195dp"
+            android:layout_height="42dp"
+            android:layout_marginStart="20dp"
+            android:hint="@string/modulo"
+            android:inputType="text"
             app:layout_constraintBottom_toBottomOf="@+id/cambiarData"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.554"
             app:layout_constraintStart_toEndOf="@+id/cambiarData" />
 
         <Button
@@ -60,7 +59,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="70dp"
-            android:text="Gardar"
+            android:text="@string/btSave"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/cambiarData" />
@@ -70,7 +69,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="30dp"
-            android:text="Cancelar"
+            android:text="@string/btCancel"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/btGardar" />

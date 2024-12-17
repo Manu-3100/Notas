@@ -7,9 +7,6 @@ import android.widget.Button;
 
 import androidx.activity.EdgeToEdge;
 import androidx.appcompat.app.AppCompatActivity;
-import androidx.core.graphics.Insets;
-import androidx.core.view.ViewCompat;
-import androidx.core.view.WindowInsetsCompat;
 
 import com.pmdm.notas.Login.entities.Usuario;
 import com.pmdm.notas.NotasAdapter.Activities.NotasActivity;
@@ -30,7 +27,7 @@ public class MainActivity extends AppCompatActivity {
         EdgeToEdge.enable(this);
         setContentView(R.layout.login);
 
-        Button button = findViewById(R.id.button2);
+        Button button = findViewById(R.id.btAcceder);
         button.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
