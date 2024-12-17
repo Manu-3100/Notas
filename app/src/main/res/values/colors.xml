@@ -3,5 +3,6 @@
     <color name="black">#FF000000</color>
     <color name="white">#FFFFFFFF</color>
     <color name="azul">#BF50AAF2</color>
+    <color name="azulToolbar">#3A76A2</color>
     <color name="transparencia">#783453FB</color>
 </resources>
