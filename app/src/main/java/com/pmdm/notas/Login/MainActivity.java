@@ -19,8 +19,6 @@ public class MainActivity extends AppCompatActivity {
     // lista de la clase Usuario, para guardar los usuarios.
     private List<Usuario> usuariosList;
 
-
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -36,7 +34,6 @@ public class MainActivity extends AppCompatActivity {
             }
         });
 
-
         generarListaUsuarios();
        // anadirUsuarios();
 
@@ -44,14 +41,11 @@ public class MainActivity extends AppCompatActivity {
         // revisar si está registrado o no (mirar si está dentro de la lista)
         // si no está registrado sacar un toast y pedir que se registre.
         // si se registra sin querer y ya está registrado.
-
-
     }
     private void generarListaUsuarios(){
         usuariosList = new ArrayList<>();
         usuariosList.add(new Usuario("nadir","nadir1234"));
         usuariosList.add(new Usuario("aroa","abc123."));
-
     }
 
     public void anadirUsuario(){

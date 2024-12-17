@@ -47,9 +47,9 @@ public class NotasActivity extends AppCompatActivity {
 
         binding.rvNota.setLayoutManager(new LinearLayoutManager(this));
 
-        notasList  = new ArrayList<Nota>();
+        notasList = new ArrayList<Nota>();
         notasList.add(new Nota("A saber", "onte", "pmdm"));
-
+        notasList.add(new Nota("quen sabe", "antonte", "psp"));
         adapter = new NotasAdapter(notasList, getApplicationContext(), new NotasAdapter.OnItemClickListener(){
             int posicion;
             @Override

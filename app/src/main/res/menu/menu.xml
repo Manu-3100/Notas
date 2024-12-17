@@ -7,7 +7,7 @@
     <!-- Asignar nombre de usuario-->
     <item android:title="Usuario"
         android:id="@+id/NombreUsuario"
-        app:showAsAction="always" />
+        app:showAsAction="always"/>
 
     <item android:title="Añadir nota"
         android:id="@+id/AñadirNota"/>

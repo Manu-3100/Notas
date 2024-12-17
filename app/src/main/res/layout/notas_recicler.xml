@@ -4,20 +4,20 @@
     xmlns:tools="http://schemas.android.com/tools">
 
     <androidx.constraintlayout.widget.ConstraintLayout
-
         android:id="@+id/notas_recicler"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        tools:context=".NotasAdapter.Activities.NotasActivity">
-
+        tools:context=".NotasAdapter.Activities.NotasActivity"
+        android:background="@color/verde">
+        <!-- android:theme esta en values/themes.xml, sirve pa cambiar o tema
+         do menu porque se non non hai outra maneira-->
         <com.google.android.material.appbar.AppBarLayout
             android:id="@+id/appBarLayout"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:fitsSystemWindows="true"
-            android:background="@color/azulToolbar"
+            android:theme="@style/ToolbarTheme"
             app:title="Notas"
-            app:titleTextColor="@color/white"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent">
@@ -26,14 +26,13 @@
                 android:id="@+id/toolbar"
                 android:layout_width="match_parent"
                 android:layout_height="?attr/actionBarSize" />
-
         </com.google.android.material.appbar.AppBarLayout>
 
         <androidx.recyclerview.widget.RecyclerView
             android:id="@+id/rvNota"
             android:layout_width="0dp"
             android:layout_height="0dp"
-            android:layout_marginTop="0dp"
+            android:layout_margin="10dp"
             android:padding="5dp"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
@@ -41,7 +40,7 @@
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/appBarLayout"
             app:layout_constraintVertical_bias="0.0"
-            android:background="?android:attr/selectableItemBackground"/>
+            android:background="@color/verde"/>
 
         <com.google.android.material.floatingactionbutton.FloatingActionButton
             android:id="@+id/fab"

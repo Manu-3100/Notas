@@ -6,4 +6,12 @@
     </style>
 
     <style name="Theme.Notas" parent="Base.Theme.Notas" />
+
+    <style name="ToolbarTheme">
+
+        <item name="android:textColorPrimary">@color/white</item>
+        <item name="android:background">@color/azulToolbar</item>
+    </style>
+
+
 </resources>

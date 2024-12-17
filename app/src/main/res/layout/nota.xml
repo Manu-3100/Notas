@@ -5,11 +5,13 @@
     android:layout_height="wrap_content"
     android:padding="10dp"
     android:layout_marginBottom="16dp"
-    android:elevation="@dimen/cardview_default_elevation">
+    android:elevation="20dp"
+    app:cardCornerRadius="20dp">
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
-        android:layout_height="match_parent">
+        android:layout_height="match_parent"
+        android:background="@color/red">
 
         <TextView
             android:id="@+id/tvData"
@@ -17,6 +19,8 @@
             android:layout_height="wrap_content"
             android:layout_marginStart="30dp"
             android:text="@string/data"
+            android:textSize="20sp"
+            android:textColor="@color/black"
             app:layout_constraintBottom_toTopOf="@id/tvModulo"
             app:layout_constraintStart_toEndOf="@id/imaxe"
             app:layout_constraintTop_toBottomOf="@id/tvTitulo" />
@@ -26,6 +30,8 @@
             android:layout_height="wrap_content"
             android:layout_marginStart="30dp"
             android:text="@string/modulo"
+            android:textSize="20sp"
+            android:textColor="@color/black"
             app:layout_constraintBottom_toBottomOf="@+id/imaxe"
             app:layout_constraintStart_toEndOf="@+id/imaxe" />
 
@@ -47,6 +53,8 @@
             android:layout_height="wrap_content"
             android:layout_marginStart="30dp"
             android:text="@string/tituloNota"
+            android:textSize="20sp"
+            android:textColor="@color/black"
             app:layout_constraintStart_toEndOf="@id/imaxe"
             app:layout_constraintTop_toTopOf="@id/imaxe" />
 
