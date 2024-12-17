@@ -11,10 +11,18 @@ import androidx.core.graphics.Insets;
 import androidx.core.view.ViewCompat;
 import androidx.core.view.WindowInsetsCompat;
 
+import com.pmdm.notas.Login.entities.Usuario;
 import com.pmdm.notas.NotasAdapter.Activities.NotasActivity;
 import com.pmdm.notas.R;
 
+import java.util.ArrayList;
+import java.util.List;
+
 public class MainActivity extends AppCompatActivity {
+    // lista de la clase Usuario, para guardar los usuarios.
+    private List<Usuario> usuariosList;
+
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -31,5 +39,25 @@ public class MainActivity extends AppCompatActivity {
             }
         });
 
+
+        generarListaUsuarios();
+       // anadirUsuarios();
+
+        // revisar que los datos introducidos estén bien introducidos.
+        // revisar si está registrado o no (mirar si está dentro de la lista)
+        // si no está registrado sacar un toast y pedir que se registre.
+        // si se registra sin querer y ya está registrado.
+
+
+    }
+    private void generarListaUsuarios(){
+        usuariosList = new ArrayList<>();
+        usuariosList.add(new Usuario("nadir","nadir1234"));
+        usuariosList.add(new Usuario("aroa","abc123."));
+
+    }
+
+    public void anadirUsuario(){
+        // Usuario nuevoUsuario = new Usuario
     }
 }
