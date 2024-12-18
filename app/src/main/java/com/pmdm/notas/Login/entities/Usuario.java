@@ -1,5 +1,9 @@
 package com.pmdm.notas.Login.entities;
 
+import androidx.annotation.Nullable;
+
+import java.util.Objects;
+
 public class Usuario {
 
     private String nome;
@@ -24,5 +28,15 @@ public class Usuario {
 
     public void setContrasinal(String contrasinal) {
         this.contrasinal = contrasinal;
+    }
+
+    @Override
+    public boolean equals(@Nullable Object obj) {
+        if (this == obj) return true; // Compara referencias
+        if (obj == null || getClass() != obj.getClass()) 
+            return false; // Verifica el tipo
+        Usuario usuario = (Usuario) obj;
+        return Objects.equals(nome, usuario.nome) &&
+                Objects.equals(contrasinal, usuario.contrasinal); // Compara los atributos
     }
 }
