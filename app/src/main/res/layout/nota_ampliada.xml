@@ -46,7 +46,7 @@
             app:layout_constraintTop_toBottomOf="@+id/cambiarTitulo" />
 
         <EditText
-            android:id="@+id/dfModulo"
+            android:id="@+id/cambiarModulo"
             android:layout_width="195dp"
             android:layout_height="42dp"
             android:layout_marginStart="20dp"
