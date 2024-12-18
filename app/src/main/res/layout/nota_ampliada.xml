@@ -7,8 +7,8 @@
         android:id="@+id/nota_ampliada"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        tools:context=".NotasAdapter.Entities.NotaAmpliada"
-        android:background="@color/card">
+        android:background="@color/card"
+        tools:context=".NotasAdapter.Entities.NotaAmpliada">
 
         <TextView
             android:id="@+id/modificarNota"
@@ -62,6 +62,19 @@
             app:layout_constraintTop_toBottomOf="@+id/cambiarData" />
 
         <Button
+            android:id="@+id/btCancelar"
+            style="@style/botones"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:fontFamily="sans-serif-black"
+            android:text="@string/btCancel"
+            android:textColor="@color/colorTexto"
+            app:layout_constraintEnd_toEndOf="@+id/modificarNota"
+            app:layout_constraintHorizontal_bias="0.511"
+            app:layout_constraintStart_toStartOf="@+id/modificarNota"
+            tools:layout_editor_absoluteY="572dp" />
+
+        <Button
             android:id="@+id/btGardar"
             style="@style/botones"
             android:layout_width="wrap_content"
@@ -69,23 +82,11 @@
             android:fontFamily="sans-serif-black"
             android:text="@string/btSave"
             android:textColor="@color/colorTexto"
-
-            tools:layout_editor_absoluteX="81dp"
-            tools:layout_editor_absoluteY="535dp" />
-
-        <Button
-            android:id="@+id/btCancelar"
-            style="@style/botones"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="32dp"
-            android:fontFamily="sans-serif-black"
-            android:text="@string/btCancel"
-            android:textColor="@color/colorTexto"
             app:layout_constraintEnd_toEndOf="@+id/modificarNota"
-            app:layout_constraintHorizontal_bias="0.235"
-            app:layout_constraintStart_toEndOf="@+id/btGardar"
-            tools:layout_editor_absoluteY="535dp" />
+            app:layout_constraintHorizontal_bias="0.508"
+            app:layout_constraintStart_toStartOf="@+id/modificarNota"
+            tools:layout_editor_absoluteY="508dp" />
+
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 </layout>
