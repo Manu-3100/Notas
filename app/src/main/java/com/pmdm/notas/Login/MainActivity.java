@@ -73,9 +73,6 @@ public class MainActivity extends AppCompatActivity {
         String usuario = user.getText().toString();
         String contrasinal = pass.getText().toString();
 
-
-
-
         // recorrer la lista para ver si usuario existe o no y contraseña existen
         for (Usuario persona : usuariosList){
             // este toast es por si no completa bien todos los campos.
@@ -130,8 +127,15 @@ public class MainActivity extends AppCompatActivity {
                 // añadir usuario nuevo a la lista
                 usuariosList.add(new Usuario(usuario,contrasinal));
 
+                // creamos nuestra actividad
                 Intent intent2 = new Intent(MainActivity.this, NotasActivity.class);
+
+                // para que aparezca el nombre del usuario que tenga la sesión iniciada.
+                intent2.putExtra("usuario", usuario);
+
+                // iniciar actividad:
                 startActivity(intent2);
+
                 Toast.makeText(this, "USUARIO NOVO AÑADIDO", Toast.LENGTH_SHORT).show();
                 break;
 
