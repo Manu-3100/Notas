@@ -91,12 +91,11 @@ public class MainActivity extends AppCompatActivity {
                 Intent intent = new Intent(MainActivity.this, NotasActivity.class);
                 startActivity(intent);
 
-                Toast.makeText(this, "ACCEDIENDO...", Toast.LENGTH_SHORT).show();
+                Toast.makeText(this, "ACCEDENDO...", Toast.LENGTH_SHORT).show();
             }
             else if (!persona.getNome().equals(usuario) && !persona.getContrasinal().equals(contrasinal)){
                 Toast.makeText(this, "USUARIO NON EXISTE", Toast.LENGTH_SHORT).show();
             }
-            return;
         }
 
         // vaciar los campos de texto
@@ -113,14 +112,12 @@ public class MainActivity extends AppCompatActivity {
         if (usuario.isEmpty() || contrasinal.isEmpty()){
             Toast.makeText(this, "COMPLETE TODOS OS CAMPOS", Toast.LENGTH_SHORT).show();
         }
-
-        // recorremos la lista para comprobar que realmente ese usuario no existe:
+        // comprobamos la lista para comprobar que realmente ese usuario no existe:
 
         for (Usuario persona : usuariosList){
             if (!persona.getNome().equals(usuario) && !persona.getContrasinal().equals(contrasinal)){
                 // añadir usuario nuevo a la lista
                 usuariosList.add(new Usuario(usuario,contrasinal));
-
                 Toast.makeText(this, "USUARIO NOVO AÑADIDO", Toast.LENGTH_SHORT).show();
             }
         }
