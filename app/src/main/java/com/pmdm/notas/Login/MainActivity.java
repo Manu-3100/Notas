@@ -25,8 +25,6 @@ public class MainActivity extends AppCompatActivity {
     private EditText user;
     private EditText pass;
 
-
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -54,9 +52,6 @@ public class MainActivity extends AppCompatActivity {
             }
         });
 
-
-       //
-
         // revisar que los datos introducidos estén bien introducidos.
         // revisar si está registrado o no (mirar si está dentro de la lista)
         // si no está registrado sacar un toast y pedir que se registre.
@@ -70,11 +65,8 @@ public class MainActivity extends AppCompatActivity {
 
     public void comprobarUsuario(){
         // cogemos la información que nos ha introducido el usuario.
-        String usuario = user.getText().toString();
-        String contrasinal = pass.getText().toString();
-
-
-
+        String usuario = user.getText().toString().trim();
+        String contrasinal = pass.getText().toString().trim();
 
         // recorrer la lista para ver si usuario existe o no y contraseña existen
         for (Usuario persona : usuariosList){
@@ -92,6 +84,8 @@ public class MainActivity extends AppCompatActivity {
                 Toast.makeText(this, "USUARIO INCORRECTO", Toast.LENGTH_SHORT).show();
                 break;
             }
+
+            // si el usuario y la contraseña son correctos tiene que iniciar la actividad.
             else if (persona.getNome().equals(usuario) && persona.getContrasinal().equals(contrasinal)){
                 Intent intent = new Intent(MainActivity.this, NotasActivity.class);
                 intent.putExtra("usuario", usuario);
@@ -100,6 +94,8 @@ public class MainActivity extends AppCompatActivity {
                 Toast.makeText(this, "ACCEDIENDO...", Toast.LENGTH_SHORT).show();
                 break;
             }
+
+            // si el usuario y la contraseña no coinciden decirle que usuario no existe.
             else if (!persona.getNome().equals(usuario) && !persona.getContrasinal().equals(contrasinal)){
                 Toast.makeText(this, "USUARIO NON EXISTE", Toast.LENGTH_SHORT).show();
                 break;
@@ -115,9 +111,8 @@ public class MainActivity extends AppCompatActivity {
 
     public void anadirUsuario(){
         // cogemos la información que nos ha introducido el usuario.
-        String usuario = user.getText().toString();
-        String contrasinal = pass.getText().toString();
-
+        String usuario = user.getText().toString().trim();
+        String contrasinal = pass.getText().toString().trim();
 
         // recorremos la lista para comprobar que realmente ese usuario no existe:
 
@@ -130,8 +125,15 @@ public class MainActivity extends AppCompatActivity {
                 // añadir usuario nuevo a la lista
                 usuariosList.add(new Usuario(usuario,contrasinal));
 
+                // creamos nuestra actividad
                 Intent intent2 = new Intent(MainActivity.this, NotasActivity.class);
+
+                // para que aparezca el nombre del usuario que tenga la sesión iniciada.
+                intent2.putExtra("usuario", usuario);
+
+                // iniciar actividad:
                 startActivity(intent2);
+
                 Toast.makeText(this, "USUARIO NOVO AÑADIDO", Toast.LENGTH_SHORT).show();
                 break;
 
