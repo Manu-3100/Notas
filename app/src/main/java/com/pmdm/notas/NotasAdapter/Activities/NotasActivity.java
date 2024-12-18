@@ -2,6 +2,7 @@ package com.pmdm.notas.NotasAdapter.Activities;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.os.Parcelable;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.widget.Toast;
@@ -19,6 +20,7 @@ import com.pmdm.notas.NotasAdapter.Entities.NotaAmpliada;
 import com.pmdm.notas.R;
 import com.pmdm.notas.databinding.NotasReciclerBinding;
 
+import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -57,12 +59,13 @@ public class NotasActivity extends AppCompatActivity {
             int posicion;
             @Override
             public void onItemClick(int position) {
-                posicion = position;
                 Toast.makeText(NotasActivity.this, notasList.get(position).getTitulo(), Toast.LENGTH_SHORT).show();
                 adapter.notifyItemChanged(position);
 
                 // aqui ten que abrir a actividade nota Ampliada
                 Intent intent = new Intent(NotasActivity.this, NotaAmpliada.class);
+                intent.putExtra("posicion", position);
+                intent.putExtra("notasList", (Serializable) notasList);
                 startActivity(intent);
             }
         });

@@ -2,7 +2,6 @@ package com.pmdm.notas.NotasAdapter.Entities;
 
 import android.content.Intent;
 import android.os.Bundle;
-import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Toast;
 
@@ -12,20 +11,17 @@ import androidx.appcompat.app.AppCompatActivity;
 import com.pmdm.notas.NotasAdapter.Activities.NotasActivity;
 import com.pmdm.notas.R;
 
-import java.util.List;
+import java.util.ArrayList;
 
 public class NotaAmpliada extends AppCompatActivity {
 
     private EditText etTitulo;
     private EditText etData;
     private EditText etModulo;
-    private Button btGardar;
-    private Button btCancelar;
 
     int position = 0;
 
-    private List<Nota> lNotas;
-
+    private ArrayList<Nota> lNotas;
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
@@ -36,20 +32,17 @@ public class NotaAmpliada extends AppCompatActivity {
         etTitulo = (EditText) findViewById(R.id.cambiarTitulo);
         etData = (EditText) findViewById(R.id.cambiarData);
         etModulo = (EditText) findViewById(R.id.cambiarModulo);
-        btGardar = (Button) findViewById(R.id.btGardar);
-        btCancelar = (Button) findViewById(R.id.btCancelar);
 
-        Intent intent = getIntent(); //recibir os datos
-        position = intent.getExtras().getInt(NotasActivity.position);
-    }
+        Intent intent = getIntent();
+        // recibese o arrayLis
+        lNotas = (ArrayList<Nota>) intent.getSerializableExtra("notasList");
+        position = intent.getExtras().getInt("posicion");
 
-    public void gardarClick(){
-        Intent datos_volta = new Intent();
-        if(etTitulo.getText() != null){
-            NotasActivity.notasList.get(position).getTitulo() = etTitulo.getText();
-            datos_volta.putExtra()
-        } else {
-            Toast.makeText(getContext(), "O campo non pode estar vacío", Toast.LENGTH_SHORT).show();
+        for(int i = 0; i < lNotas.size(); i++){
+            Toast.makeText(this, lNotas.get(i).getTitulo(), Toast.LENGTH_SHORT).show();
         }
+       // position = intent.getExtras().getInt(NotasActivity.position);
+       // etTitulo.setText(intent.getExtras()
+       //         .getString(NotasActivity.notasList.get(position).getTitulo()));
     }
 }
