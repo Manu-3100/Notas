@@ -20,11 +20,13 @@ public class NotasAdapter extends RecyclerView.Adapter<NotasAdapter.NotasAdapter
     private List<Nota> lNota;
     private Context cxt;
     private final OnItemClickListener notaListener;
+    private final OnItemLongClickListener notaLongListener;
 
-    public NotasAdapter(List<Nota> dataSet, Context contexto, OnItemClickListener listener) {
+    public NotasAdapter(List<Nota> dataSet, Context contexto, OnItemClickListener listener, OnItemLongClickListener longListener){
         this.lNota = dataSet;
         this.cxt = contexto;
         this.notaListener = listener;
+        this.notaLongListener = longListener;
     }
 
     @NonNull
@@ -44,6 +46,14 @@ public class NotasAdapter extends RecyclerView.Adapter<NotasAdapter.NotasAdapter
             if(notaListener != null){
                 notaListener.onItemClick(position);
             }
+        });
+        holder.itemView.setOnLongClickListener(view -> {
+            if(notaLongListener != null){
+                notaLongListener.onItemLongClick(position);
+                return true;
+            }
+            else
+                return false;
         });
     }
 
@@ -77,5 +87,8 @@ public class NotasAdapter extends RecyclerView.Adapter<NotasAdapter.NotasAdapter
 
     public interface OnItemClickListener{
         void onItemClick(int position);
+    }
+    public interface OnItemLongClickListener{
+        void onItemLongClick(int position);
     }
 }

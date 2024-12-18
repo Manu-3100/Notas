@@ -44,9 +44,9 @@ public class NotaAmpliada extends AppCompatActivity {
         lNotas = (ArrayList<Nota>) intent.getSerializableExtra("notasList");
         position = intent.getExtras().getInt("posicion");
 
-        for(int i = 0; i < lNotas.size(); i++){
-            Toast.makeText(this, lNotas.get(i).getTitulo(), Toast.LENGTH_SHORT).show();
-        }
+//        for(int i = 0; i < lNotas.size(); i++){
+//            Toast.makeText(this, lNotas.get(i).getTitulo(), Toast.LENGTH_SHORT).show();
+//        }
 
         etTitulo.setText(lNotas.get(position).getTitulo());
         etData.setText(lNotas.get(position).getData());
