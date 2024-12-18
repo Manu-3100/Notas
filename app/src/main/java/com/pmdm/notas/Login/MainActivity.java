@@ -68,39 +68,40 @@ public class MainActivity extends AppCompatActivity {
         String usuario = user.getText().toString().trim();
         String contrasinal = pass.getText().toString().trim();
 
+        boolean usuarioComprobar = true;
+        boolean contrasinalComprobar = true;
+
+        if (usuario.isEmpty() || contrasinal.isEmpty()){
+            Toast.makeText(this, "COMPLETE TODOS OS CAMPOS", Toast.LENGTH_SHORT).show();
+        }
+
         // recorrer la lista para ver si usuario existe o no y contraseña existen
         for (Usuario persona : usuariosList){
-            // este toast es por si no completa bien todos los campos.
-            if (usuario.isEmpty() || contrasinal.isEmpty()){
-                Toast.makeText(this, "COMPLETE TODOS OS CAMPOS", Toast.LENGTH_SHORT).show();
-                break;
-            }
-            // comprobar si contraseña y usuario son correctos:
-            else if (persona.getNome().equals(usuario) && !persona.getContrasinal().equals(contrasinal)) {
-                Toast.makeText(this, "CONTRASINAL INCORRECTO", Toast.LENGTH_SHORT).show();
-                break;
-            }
-            else if (!persona.getNome().equals(usuario) && persona.getContrasinal().equals(contrasinal)){
-                Toast.makeText(this, "USUARIO INCORRECTO", Toast.LENGTH_SHORT).show();
-                break;
-            }
 
+            
             // si el usuario y la contraseña son correctos tiene que iniciar la actividad.
-            else if (persona.getNome().equals(usuario) && persona.getContrasinal().equals(contrasinal)){
+            if (persona.getNome().equals(usuario) && persona.getContrasinal().equals(contrasinal)){
                 Intent intent = new Intent(MainActivity.this, NotasActivity.class);
                 intent.putExtra("usuario", usuario);
                 startActivity(intent);
-
                 Toast.makeText(this, "ACCEDIENDO...", Toast.LENGTH_SHORT).show();
                 break;
             }
-
-            // si el usuario y la contraseña no coinciden decirle que usuario no existe.
-            else if (!persona.getNome().equals(usuario) && !persona.getContrasinal().equals(contrasinal)){
-                Toast.makeText(this, "USUARIO NON EXISTE", Toast.LENGTH_SHORT).show();
-                break;
+            // comprobar se contrasinal e correctos:
+            else if (persona.getContrasinal().equals(contrasinal)) {
+                contrasinalComprobar = true;
             }
-            return;
+            // si el usuario y la contraseña no coinciden decirle que usuario no existe.
+            else {
+                if (!usuarioComprobar && !contrasinalComprobar){
+                    Toast.makeText(this, "USUARIO NON EXISTE", Toast.LENGTH_SHORT).show();
+                    break;
+                }
+                else if(usuarioComprobar && !contrasinalComprobar){
+                    Toast.makeText(this, "CONTRASINAL INCORRECTO", Toast.LENGTH_SHORT).show();
+                    break;
+                }
+            }
         }
 
         // vaciar los campos de texto
