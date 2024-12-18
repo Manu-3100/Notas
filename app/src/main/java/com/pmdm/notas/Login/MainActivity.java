@@ -89,6 +89,7 @@ public class MainActivity extends AppCompatActivity {
             }
             else if (persona.getNome().equals(usuario) && persona.getContrasinal().equals(contrasinal)){
                 Intent intent = new Intent(MainActivity.this, NotasActivity.class);
+                intent.putExtra("usuario", usuario);
                 startActivity(intent);
 
                 Toast.makeText(this, "ACCEDIENDO...", Toast.LENGTH_SHORT).show();
@@ -122,6 +123,9 @@ public class MainActivity extends AppCompatActivity {
                 usuariosList.add(new Usuario(usuario,contrasinal));
 
                 Toast.makeText(this, "USUARIO NOVO AÑADIDO", Toast.LENGTH_SHORT).show();
+            }
+            else (){
+                Toast.makeText(this, "USUARIO XA EXISTENTE", Toast.LENGTH_SHORT).show();
             }
         }
 
