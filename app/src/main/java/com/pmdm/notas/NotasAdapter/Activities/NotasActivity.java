@@ -14,6 +14,7 @@ import androidx.databinding.DataBindingUtil;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.pmdm.notas.Login.MainActivity;
 import com.pmdm.notas.NotasAdapter.Adapter.NotasAdapter;
 import com.pmdm.notas.NotasAdapter.Entities.Nota;
 import com.pmdm.notas.NotasAdapter.Entities.NotaAmpliada;
@@ -94,6 +95,9 @@ public class NotasActivity extends AppCompatActivity {
         }
         if(id == R.id.CerrarSesion){
             Toast.makeText(this, "Cerrar sesión",Toast.LENGTH_SHORT).show();
+            Intent intent = new Intent(NotasActivity.this, MainActivity.class);
+            startActivity(intent);
+            finish();
             return true;
         }
         return super.onOptionsItemSelected(item);
