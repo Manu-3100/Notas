@@ -124,7 +124,7 @@ public class MainActivity extends AppCompatActivity {
 
                 Toast.makeText(this, "USUARIO NOVO AÑADIDO", Toast.LENGTH_SHORT).show();
             }
-            else (){
+            else if (persona.getNome().equals(usuario)){
                 Toast.makeText(this, "USUARIO XA EXISTENTE", Toast.LENGTH_SHORT).show();
             }
         }
