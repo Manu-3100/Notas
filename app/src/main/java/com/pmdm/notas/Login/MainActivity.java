@@ -89,6 +89,7 @@ public class MainActivity extends AppCompatActivity {
             }
             else if (persona.getNome().equals(usuario) && persona.getContrasinal().equals(contrasinal)){
                 Intent intent = new Intent(MainActivity.this, NotasActivity.class);
+                intent.putExtra("usuario", usuario);
                 startActivity(intent);
 
                 Toast.makeText(this, "ACCEDIENDO...", Toast.LENGTH_SHORT).show();
@@ -117,11 +118,19 @@ public class MainActivity extends AppCompatActivity {
         // recorremos la lista para comprobar que realmente ese usuario no existe:
 
         for (Usuario persona : usuariosList){
-            if (!persona.getNome().equals(usuario) && !persona.getContrasinal().equals(contrasinal)){
+            if (!persona.getNome().equals(usuario)){
                 // añadir usuario nuevo a la lista
                 usuariosList.add(new Usuario(usuario,contrasinal));
 
+                Intent intent2 = new Intent(MainActivity.this, NotasActivity.class);
+                startActivity(intent2);
                 Toast.makeText(this, "USUARIO NOVO AÑADIDO", Toast.LENGTH_SHORT).show();
+                break;
+
+            }
+            else if (persona.getNome().equals(usuario)){
+                Toast.makeText(this, "USUARIO XA EXISTENTE", Toast.LENGTH_SHORT).show();
+                break;
             }
         }
 
