@@ -17,7 +17,8 @@ public class NotaAmpliada extends AppCompatActivity {
     private EditText etTitulo;
     private EditText etData;
     private EditText etModulo;
-    private int position;
+
+    int position = 0;
 
     private List<Nota> lNotas;
 
@@ -26,15 +27,15 @@ public class NotaAmpliada extends AppCompatActivity {
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
 
-        setContentView(R.id.nota_ampliada);
+        setContentView(R.layout.nota_ampliada);
 
         etTitulo = (EditText) findViewById(R.id.cambiarTitulo);
         etData = (EditText) findViewById(R.id.cambiarData);
         etModulo = (EditText) findViewById(R.id.cambiarModulo);
 
         Intent intent = getIntent();
-        position = intent.getExtras().getInt(NotasActivity.position);
-        etTitulo.setText(intent.getExtras()
-                .getString(NotasActivity.notasList.get(position).getTitulo()));
+       // position = intent.getExtras().getInt(NotasActivity.position);
+       // etTitulo.setText(intent.getExtras()
+       //         .getString(NotasActivity.notasList.get(position).getTitulo()));
     }
 }
