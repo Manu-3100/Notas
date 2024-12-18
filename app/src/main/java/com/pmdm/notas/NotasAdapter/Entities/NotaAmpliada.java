@@ -82,7 +82,6 @@ public class NotaAmpliada extends AppCompatActivity {
     public void cancelarClick(){
         Intent i = new Intent(NotaAmpliada.this, NotasActivity.class);
         startActivity(i);
-
         super.finish();
     }
 }
