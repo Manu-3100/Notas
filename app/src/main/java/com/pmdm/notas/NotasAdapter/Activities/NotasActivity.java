@@ -9,12 +9,10 @@ import android.widget.Toast;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
-import androidx.appcompat.widget.Toolbar;
 import androidx.databinding.DataBindingUtil;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
-import com.pmdm.notas.Login.MainActivity;
 import com.pmdm.notas.NotasAdapter.Adapter.NotasAdapter;
 import com.pmdm.notas.NotasAdapter.Entities.Nota;
 import com.pmdm.notas.NotasAdapter.Entities.NotaAmpliada;
@@ -36,11 +34,16 @@ public class NotasActivity extends AppCompatActivity {
     // Almacen de notas
     List<Nota> notasList;
 
+    // creamos una variable para guardar el nombre del usuario con el que se inicia
+    String usuario;
+
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-
         binding = DataBindingUtil.setContentView(this, R.layout.notas_recicler);
+
+        // Recibimos el nombre del usuario
+        usuario = getIntent().getStringExtra("usuario");
 
         // Asignamos la toolbar a la action bar
         setSupportActionBar(binding.toolbar);
@@ -70,6 +73,7 @@ public class NotasActivity extends AppCompatActivity {
     @Override
     public boolean onCreateOptionsMenu(Menu menu){
         getMenuInflater().inflate(R.menu.menu, menu);
+        menu.findItem(R.id.NomeUsuario).setTitle(usuario);
         return true;
     }
 
@@ -77,7 +81,7 @@ public class NotasActivity extends AppCompatActivity {
     public boolean onOptionsItemSelected(@NonNull MenuItem item) {
         int id = item.getItemId();
 
-        if(id == R.id.AñadirNota){
+        if(id == R.id.EngadirNota){
             Toast.makeText(this, "Añadir nota", Toast.LENGTH_SHORT).show();
             return true;
         }
