@@ -6,11 +6,11 @@
 
     <!-- Asignar nombre de usuario-->
     <item android:title="Usuario"
-        android:id="@+id/NombreUsuario"
+        android:id="@+id/NomeUsuario"
         app:showAsAction="always"/>
 
-    <item android:title="Añadir nota"
-        android:id="@+id/AñadirNota"/>
+    <item android:title="Engadir nota"
+        android:id="@+id/EngadirNota"/>
 
     <item android:title="Eliminar nota"
         android:id="@+id/EliminarNota"/>
