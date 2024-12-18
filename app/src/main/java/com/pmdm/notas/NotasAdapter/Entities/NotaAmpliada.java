@@ -57,7 +57,7 @@ public class NotaAmpliada extends AppCompatActivity {
     }
 
     public void gardarClick(int position){
-        Intent datos_volta = new Intent(NotaAmpliada.this, NotasActivity.clas);
+        Intent datos_volta = new Intent(NotaAmpliada.this, NotasActivity.class);
 
         if(etTitulo.getText() != null && etData.getText() != null && etModulo.getText() != null){
             Toast.makeText(this, "Gardando cambios...", Toast.LENGTH_SHORT).show();
@@ -72,7 +72,7 @@ public class NotaAmpliada extends AppCompatActivity {
 
 //            setResult(RESULT_OK, datos_volta);
 
-            startActivity(i);
+            startActivity(datos_volta);
             super.finish();
         } else {
             Toast.makeText(this, "Ningún campo non pode estar vacío", Toast.LENGTH_SHORT).show();
