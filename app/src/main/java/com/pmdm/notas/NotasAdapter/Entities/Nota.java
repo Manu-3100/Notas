@@ -1,6 +1,8 @@
 package com.pmdm.notas.NotasAdapter.Entities;
 
-public class Nota {
+import java.io.Serializable;
+
+public class Nota implements Serializable {
     private String titulo;
     private String data;
     private String modulo;

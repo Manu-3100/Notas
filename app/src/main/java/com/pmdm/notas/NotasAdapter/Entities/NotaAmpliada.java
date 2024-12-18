@@ -3,6 +3,7 @@ package com.pmdm.notas.NotasAdapter.Entities;
 import android.content.Intent;
 import android.os.Bundle;
 import android.widget.EditText;
+import android.widget.Toast;
 
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
@@ -10,7 +11,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import com.pmdm.notas.NotasAdapter.Activities.NotasActivity;
 import com.pmdm.notas.R;
 
-import java.util.List;
+import java.util.ArrayList;
 
 public class NotaAmpliada extends AppCompatActivity {
 
@@ -20,8 +21,7 @@ public class NotaAmpliada extends AppCompatActivity {
 
     int position = 0;
 
-    private List<Nota> lNotas;
-
+    private ArrayList<Nota> lNotas;
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
@@ -34,6 +34,13 @@ public class NotaAmpliada extends AppCompatActivity {
         etModulo = (EditText) findViewById(R.id.cambiarModulo);
 
         Intent intent = getIntent();
+        // recibese o arrayLis
+        lNotas = (ArrayList<Nota>) intent.getSerializableExtra("notasList");
+        position = intent.getExtras().getInt("posicion");
+
+        for(int i = 0; i < lNotas.size(); i++){
+            Toast.makeText(this, lNotas.get(i).getTitulo(), Toast.LENGTH_SHORT).show();
+        }
        // position = intent.getExtras().getInt(NotasActivity.position);
        // etTitulo.setText(intent.getExtras()
        //         .getString(NotasActivity.notasList.get(position).getTitulo()));
