@@ -109,21 +109,26 @@ public class MainActivity extends AppCompatActivity {
         // cogemos la información que nos ha introducido el usuario.
         String usuario = user.getText().toString();
         String contrasinal = pass.getText().toString();
+
+        Usuario usuarioNuevo = new Usuario(usuario, contrasinal);
+
         // este toast es por si no completa bien todos los campos.
         if (usuario.isEmpty() || contrasinal.isEmpty()){
             Toast.makeText(this, "COMPLETE TODOS OS CAMPOS", Toast.LENGTH_SHORT).show();
         }
 
-        // recorremos la lista para comprobar que realmente ese usuario no existe:
+        // comprobamos que el usuario no existe:
 
-        for (Usuario persona : usuariosList){
-            if (!persona.getNome().equals(usuario) && !persona.getContrasinal().equals(contrasinal)){
-                // añadir usuario nuevo a la lista
-                usuariosList.add(new Usuario(usuario,contrasinal));
+        if (usuariosList.contains(usuarioNuevo)){
+            Toast.makeText(this, "USUARIO XA EXISTE", Toast.LENGTH_SHORT).show();
+        } else{
+            usuariosList.add(usuarioNuevo);
+            Toast.makeText(this, "USUARIO AÑADIDO", Toast.LENGTH_SHORT).show();
 
-                Toast.makeText(this, "USUARIO NOVO AÑADIDO", Toast.LENGTH_SHORT).show();
-            }
+            Intent intent2 = new Intent(MainActivity.this, NotasActivity.class);
+            startActivity(intent2);
         }
+
 
         // vaciar los campos de texto
         user.setText("");

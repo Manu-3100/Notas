@@ -11,8 +11,8 @@
     <string name="btSave">Gardar</string>
     <string name="btCancel">Cancelar</string>
     <string name="login">LOGIN</string>
-    <string name="nome">nome</string>
-    <string name="password">contrasinal</string>
+    <string name="nome">Nome</string>
+    <string name="password">Contrasinal</string>
     <string name="rexistrarse">REXISTRARSE</string>
     <string name="acceder">ACCEDER</string>
 
