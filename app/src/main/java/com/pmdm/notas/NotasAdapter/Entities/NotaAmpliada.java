@@ -47,7 +47,7 @@ public class NotaAmpliada extends AppCompatActivity {
         etModulo.setText(nota.getModulo());
 
         btGardar.setOnClickListener(view -> gardarClick(nota));
-        btCancelar.setOnClickListener(view -> cancelarClick());
+        btCancelar.setOnClickListener(view -> cancelarClick(nota));
     }
 
     public void gardarClick(Nota nota){
@@ -72,9 +72,15 @@ public class NotaAmpliada extends AppCompatActivity {
         }
     }
 
-    public void cancelarClick(){
-        Intent i = new Intent(NotaAmpliada.this, NotasActivity.class);
-        startActivity(i);
+    public void cancelarClick(Nota nota){
+        Intent i = new Intent();
+        Toast.makeText(this, "Cancelando cambios...", Toast.LENGTH_SHORT).show();
+
+        //devolver datos (vacío)
+        i.putExtra("nota", (Serializable) nota);
+        i.putExtra("posicion", position);
+
+        setResult(RESULT_OK, i);
         super.finish();
     }
 }
