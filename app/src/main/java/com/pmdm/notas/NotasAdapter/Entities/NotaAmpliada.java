@@ -22,10 +22,8 @@ public class NotaAmpliada extends AppCompatActivity {
     private EditText etModulo;
     private Button btGardar;
     private Button btCancelar;
-
-    int position = 0;
-
-    ArrayList<Nota> lNotas;
+    Nota nota;
+    int position;
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
@@ -41,38 +39,33 @@ public class NotaAmpliada extends AppCompatActivity {
 
         Intent intent = getIntent();
         // recibese o arrayLis
-        lNotas = (ArrayList<Nota>) intent.getSerializableExtra("notasList");
-        position = intent.getExtras().getInt("posicion");
+        nota = (Nota) intent.getSerializableExtra("nota");
+        position = intent.getIntExtra("posicion", 0);
 
-//        for(int i = 0; i < lNotas.size(); i++){
-//            Toast.makeText(this, lNotas.get(i).getTitulo(), Toast.LENGTH_SHORT).show();
-//        }
+        etTitulo.setText(nota.getTitulo());
+        etData.setText(nota.getData());
+        etModulo.setText(nota.getModulo());
 
-        etTitulo.setText(lNotas.get(position).getTitulo());
-        etData.setText(lNotas.get(position).getData());
-        etModulo.setText(lNotas.get(position).getModulo());
-
-        btGardar.setOnClickListener(view -> gardarClick(position));
+        btGardar.setOnClickListener(view -> gardarClick(nota));
         btCancelar.setOnClickListener(view -> cancelarClick());
     }
 
-    public void gardarClick(int position){
-        Intent datos_volta = new Intent(NotaAmpliada.this, NotasActivity.class);
+    public void gardarClick(Nota nota){
+        Intent datos_volta = new Intent();
 
         if(etTitulo.getText() != null && etData.getText() != null && etModulo.getText() != null){
             Toast.makeText(this, "Gardando cambios...", Toast.LENGTH_SHORT).show();
 
-            lNotas.get(position).setTitulo(etTitulo.getText().toString());
-            lNotas.get(position).setData(etData.getText().toString());
-            lNotas.get(position).setModulo(etModulo.getText().toString());
+            nota.setTitulo(etTitulo.getText().toString());
+            nota.setData(etData.getText().toString());
+            nota.setModulo(etModulo.getText().toString());
 
             //devolver datos...
-//            datos_volta.putExtra("notasList", (Serializable) lNotas);
-//            datos_volta.putExtra("posicion", position);
+            datos_volta.putExtra("nota", (Serializable) nota);
+            datos_volta.putExtra("posicion", position);
+            setResult(RESULT_OK, datos_volta);
 
-//            setResult(RESULT_OK, datos_volta);
 
-            startActivity(datos_volta);
             super.finish();
         } else {
             Toast.makeText(this, "Ningún campo non pode estar vacío", Toast.LENGTH_SHORT).show();

@@ -5,6 +5,7 @@ import android.os.Bundle;
 import android.os.Parcelable;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import androidx.annotation.NonNull;
@@ -28,27 +29,31 @@ import java.util.List;
 public class NotasActivity extends AppCompatActivity {
 
     private NotasReciclerBinding binding = null;
-    // declaramos el Recycler view y lo inicializamos a null
+    // declaramos o Recycler view e inicializamolo a null
 
     RecyclerView rvNota = null;
-    // declaramos el adaptador de nuestro recyclerView
+    // declaramos o adaptador do noso recyclerView
     private NotasAdapter adapter;
 
     // Almacen de notas
     List<Nota> notasList;
 
-    // creamos una variable para guardar el nombre del usuario con el que se inicia
+    // creamos unha variable para gardar o nome do usuario co que se inicia
     String usuario;
+
+    //codigo para recibir os datos da nota modificada
+    private static final int COD_PETICION = 33;
+
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         binding = DataBindingUtil.setContentView(this, R.layout.notas_recicler);
 
-        // Recibimos el nombre del usuario
+        // Recibimos o nome do usuario
         usuario = getIntent().getStringExtra("usuario");
 
-        // Asignamos la toolbar a la action bar
+        // Asignamos a toolbar á action bar
         setSupportActionBar(binding.toolbar);
 
         binding.rvNota.setLayoutManager(new LinearLayoutManager(this));
@@ -56,27 +61,9 @@ public class NotasActivity extends AppCompatActivity {
         notasList = new ArrayList<Nota>();
         notasList.add(new Nota("A saber", "onte", "pmdm"));
         notasList.add(new Nota("quen sabe", "antonte", "psp"));
-        adapter = new NotasAdapter(notasList, getApplicationContext(), new NotasAdapter.OnItemClickListener(){
-            int posicion;
-            @Override
-            public void onItemClick(int position) {
-                Toast.makeText(NotasActivity.this, notasList.get(position).getTitulo(), Toast.LENGTH_SHORT).show();
-                adapter.notifyItemChanged(position);
 
-                // aqui ten que abrir a actividade nota Ampliada
-                Intent intent = new Intent(NotasActivity.this, NotaAmpliada.class);
-                intent.putExtra("posicion", position);
-                intent.putExtra("notasList", (Serializable) notasList);
-                startActivity(intent);
-            }
-        }, new NotasAdapter.OnItemLongClickListener() {
-            @Override
-            public void onItemLongClick(int position) {
-                Toast.makeText(NotasActivity.this, "Long click", Toast.LENGTH_SHORT).show();
-            }
-        });
-        // asignamos el adaptador al recycler view
-        binding.rvNota.setAdapter(adapter);
+        ejecutarRecycler();
+
     }
 
     @Override
@@ -107,4 +94,58 @@ public class NotasActivity extends AppCompatActivity {
         }
         return super.onOptionsItemSelected(item);
     }
+
+    @Override
+    protected void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
+        super.onActivityResult(requestCode, resultCode, data);
+        int position;
+        Nota nota;
+        if(requestCode == COD_PETICION){
+            if(resultCode == RESULT_OK){
+                Toast.makeText(this, "Cambiando datos...", Toast.LENGTH_SHORT).show();
+
+                position = data.getIntExtra("posicion", 3);
+                nota = (Nota) data.getSerializableExtra("nota");
+
+                notasList.get(position).setTitulo(nota.getTitulo());
+                notasList.get(position).setData(nota.getData());
+                notasList.get(position).setModulo(nota.getModulo());
+                adapter.notifyItemChanged(position);
+                //ejecutarRecycler();
+
+            }
+            else{
+                Toast.makeText(this, "Houbo algún erro na execución", Toast.LENGTH_SHORT).show();
+            }
+        }
+        else{
+            Toast.makeText(this, "Houbo algún erro na execución", Toast.LENGTH_SHORT).show();
+        }
+
+    }
+
+    public void ejecutarRecycler(){
+        adapter = new NotasAdapter(notasList, getApplicationContext(), new NotasAdapter.OnItemClickListener(){
+
+            @Override
+            public void onItemClick(int position) {
+                Toast.makeText(NotasActivity.this, notasList.get(position).getTitulo(), Toast.LENGTH_SHORT).show();
+                adapter.notifyItemChanged(position);
+
+                // aqui ten que abrir a actividade nota Ampliada
+                Intent intent = new Intent(NotasActivity.this, NotaAmpliada.class);
+                intent.putExtra("nota", (Serializable) notasList.get(position));
+                intent.putExtra("posicion", position);
+                startActivityForResult(intent, COD_PETICION);
+            }
+        }, new NotasAdapter.OnItemLongClickListener() {
+            @Override
+            public void onItemLongClick(int position) {
+                Toast.makeText(NotasActivity.this, "Long click", Toast.LENGTH_SHORT).show();
+            }
+        });
+        // asignamos o adaptador ao recycler view
+        binding.rvNota.setAdapter(adapter);
+    }
+
 }
