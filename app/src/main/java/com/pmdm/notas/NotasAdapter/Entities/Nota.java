@@ -8,6 +8,7 @@ public class Nota implements Serializable {
     private String modulo;
     private String imaxe;
     private String texto;
+    private boolean eliminar;
 
     public Nota(String titulo, String data, String modulo) {
         this.titulo = titulo;
@@ -54,5 +55,13 @@ public class Nota implements Serializable {
 
     public void setTexto(String texto) {
         this.texto = texto;
+    }
+
+    public boolean isEliminar() {
+        return eliminar;
+    }
+
+    public void setEliminar(boolean eliminar) {
+        this.eliminar = eliminar;
     }
 }

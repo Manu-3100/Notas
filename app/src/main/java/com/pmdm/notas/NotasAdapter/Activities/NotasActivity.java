@@ -110,7 +110,6 @@ public class NotasActivity extends AppCompatActivity implements AddNotaDF.AddNot
                 notasList.get(position).setModulo(nota.getModulo());
                 notasList.get(position).setTexto(nota.getTexto());
                 adapter.notifyItemChanged(position);
-
             }
             else{
                 Toast.makeText(this, "Houbo algún erro na execución", Toast.LENGTH_SHORT).show();
@@ -119,12 +118,9 @@ public class NotasActivity extends AppCompatActivity implements AddNotaDF.AddNot
         else{
             Toast.makeText(this, "Houbo algún erro na execución", Toast.LENGTH_SHORT).show();
         }
-
     }
-
     public void ejecutarRecycler(){
         adapter = new NotasAdapter(notasList, getApplicationContext(), new NotasAdapter.OnItemClickListener(){
-
             @Override
             public void onItemClick(int position) {
                 Toast.makeText(NotasActivity.this, notasList.get(position).getTitulo(), Toast.LENGTH_SHORT).show();

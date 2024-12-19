@@ -28,7 +28,6 @@ public class NotasAdapter extends RecyclerView.Adapter<NotasAdapter.NotasAdapter
         this.notaListener = listener;
         this.notaLongListener = longListener;
     }
-
     @NonNull
     public NotasAdapterHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType){
         View inflate = LayoutInflater.from(parent.getContext()).inflate(R.layout.nota,parent,false);
@@ -37,11 +36,10 @@ public class NotasAdapter extends RecyclerView.Adapter<NotasAdapter.NotasAdapter
 
     public void onBindViewHolder(@NonNull NotasAdapterHolder holder, int position){
         holder.mitem = lNota.get(position);
-
         holder.tvTitulo.setText(holder.mitem.getTitulo());
         holder.tvData.setText(holder.mitem.getData());
         holder.tvModulo.setText(holder.mitem.getModulo());
-
+        holder.
         holder.itemView.setOnClickListener(view -> {
             if(notaListener != null){
                 notaListener.onItemClick(position);
@@ -54,13 +52,18 @@ public class NotasAdapter extends RecyclerView.Adapter<NotasAdapter.NotasAdapter
             } else
                 return false;
         });
-    }
 
+        if(){
+
+        }
+
+
+
+    }
     @Override
     public int getItemCount(){
         return lNota.size();
     }
-
     public class NotasAdapterHolder extends RecyclerView.ViewHolder {
         public final View vista;
         public final TextView tvTitulo;
@@ -77,13 +80,11 @@ public class NotasAdapter extends RecyclerView.Adapter<NotasAdapter.NotasAdapter
             tvData = (TextView) view.findViewById(R.id.tvData);
             tvModulo = (TextView) view.findViewById(R.id.tvModulo);
         }
-
         @Override
         public String toString() {
             return super.toString() + "\t" + tvTitulo.getText() + "\t";
         }
     }
-
     public interface OnItemClickListener{
         void onItemClick(int position);
     }
