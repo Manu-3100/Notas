@@ -51,8 +51,7 @@ public class NotasAdapter extends RecyclerView.Adapter<NotasAdapter.NotasAdapter
             if(notaLongListener != null){
                 notaLongListener.onItemLongClick(position);
                 return true;
-            }
-            else
+            } else
                 return false;
         });
     }
