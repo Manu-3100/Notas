@@ -81,6 +81,7 @@ public class MainActivity extends AppCompatActivity {
         usuariosList.add(new Usuario("nadir","nadir1234"));
         usuariosList.add(new Usuario("aroa","abc123."));
         usuariosList.add(new Usuario("manolo", "gallego"));
+        usuariosList.add(new Usuario("a", "a"));
     }
 
     public void comprobarUsuario(){
