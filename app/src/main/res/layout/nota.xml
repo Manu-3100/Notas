@@ -11,7 +11,7 @@
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:background="@color/red">
+        android:background="@color/card">
 
         <TextView
             android:id="@+id/tvData"
@@ -20,7 +20,7 @@
             android:layout_marginStart="30dp"
             android:text="@string/data"
             android:textSize="20sp"
-            android:textColor="@color/black"
+            android:textColor="@color/colorTexto"
             app:layout_constraintBottom_toTopOf="@id/tvModulo"
             app:layout_constraintStart_toEndOf="@id/imaxe"
             app:layout_constraintTop_toBottomOf="@id/tvTitulo" />
@@ -31,7 +31,7 @@
             android:layout_marginStart="30dp"
             android:text="@string/modulo"
             android:textSize="20sp"
-            android:textColor="@color/black"
+            android:textColor="@color/colorTexto"
             app:layout_constraintBottom_toBottomOf="@+id/imaxe"
             app:layout_constraintStart_toEndOf="@+id/imaxe" />
 
@@ -54,7 +54,7 @@
             android:layout_marginStart="30dp"
             android:text="@string/tituloNota"
             android:textSize="20sp"
-            android:textColor="@color/black"
+            android:textColor="@color/colorTexto"
             app:layout_constraintStart_toEndOf="@id/imaxe"
             app:layout_constraintTop_toTopOf="@id/imaxe" />
 

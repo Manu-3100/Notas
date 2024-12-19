@@ -69,8 +69,13 @@ public class NotasActivity extends AppCompatActivity {
                 intent.putExtra("notasList", (Serializable) notasList);
                 startActivity(intent);
             }
+        }, new NotasAdapter.OnItemLongClickListener() {
+            @Override
+            public void onItemLongClick(int position) {
+                Toast.makeText(NotasActivity.this, "Long click", Toast.LENGTH_SHORT).show();
+            }
         });
-
+        // asignamos el adaptador al recycler view
         binding.rvNota.setAdapter(adapter);
     }
 

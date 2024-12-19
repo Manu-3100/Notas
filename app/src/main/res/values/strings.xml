@@ -5,11 +5,11 @@
     <string name="data">Data</string>
     <string name="modulo">Módulo</string>
     <string name="tituloNota">Título</string>
-    <string name="modificarNota">Modificar unha nota</string>
-    <string name="add">Crear unha nova nota</string>
-    <string name="btAdd">Engadir</string>
-    <string name="btSave">Gardar</string>
-    <string name="btCancel">Cancelar</string>
+    <string name="modificarNota">MODIFICAR NOTA</string>
+    <string name="novaNota">NOVA NOTA</string>
+    <string name="btAdd">ENGADIR</string>
+    <string name="btSave">GARDAR</string>
+    <string name="btCancel">CANCELAR</string>
     <string name="login">LOGIN</string>
     <string name="nome">Nome</string>
     <string name="password">Contrasinal</string>

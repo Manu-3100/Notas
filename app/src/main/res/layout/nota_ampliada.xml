@@ -7,17 +7,21 @@
         android:id="@+id/nota_ampliada"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
+        android:background="@color/card"
         tools:context=".NotasAdapter.Entities.NotaAmpliada">
 
         <TextView
             android:id="@+id/modificarNota"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginTop="50dp"
+            android:layout_marginTop="96dp"
+            android:fontFamily="sans-serif-black"
             android:text="@string/modificarNota"
+            android:textColor="@color/colorTexto"
             android:textSize="20dp"
             android:textStyle="bold"
             app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.497"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
 
@@ -25,55 +29,64 @@
             android:id="@+id/cambiarTitulo"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginStart="30dp"
             android:layout_marginTop="100dp"
             android:ems="10"
-            android:inputType="text"
             android:hint="@string/tituloNota"
-            app:layout_constraintStart_toStartOf="parent"
+            android:inputType="text"
+            android:textColorHint="@color/colorHint"
+            app:layout_constraintEnd_toEndOf="@+id/modificarNota"
+            app:layout_constraintStart_toStartOf="@+id/modificarNota"
             app:layout_constraintTop_toBottomOf="@+id/modificarNota" />
 
         <EditText
             android:id="@+id/cambiarData"
             android:layout_width="144dp"
             android:layout_height="41dp"
-            android:layout_marginStart="30dp"
-            android:layout_marginTop="20dp"
+            android:layout_marginTop="52dp"
             android:ems="10"
-            android:inputType="date"
             android:hint="@string/data"
-            app:layout_constraintStart_toStartOf="parent"
+            android:inputType="date"
+            android:textColorHint="@color/colorHint"
+            app:layout_constraintStart_toStartOf="@+id/cambiarTitulo"
             app:layout_constraintTop_toBottomOf="@+id/cambiarTitulo" />
 
         <EditText
             android:id="@+id/cambiarModulo"
             android:layout_width="195dp"
             android:layout_height="42dp"
-            android:layout_marginStart="20dp"
+            android:layout_marginTop="52dp"
             android:hint="@string/modulo"
             android:inputType="text"
-            app:layout_constraintBottom_toBottomOf="@+id/cambiarData"
-            app:layout_constraintStart_toEndOf="@+id/cambiarData" />
-
-        <Button
-            android:id="@+id/btGardar"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="84dp"
-            android:text="@string/btSave"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
+            android:textColorHint="@color/colorHint"
+            app:layout_constraintStart_toStartOf="@+id/cambiarData"
             app:layout_constraintTop_toBottomOf="@+id/cambiarData" />
 
         <Button
             android:id="@+id/btCancelar"
+            style="@style/botones"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginTop="30dp"
+            android:fontFamily="sans-serif-black"
             android:text="@string/btCancel"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/btGardar" />
+            android:textColor="@color/colorTexto"
+            app:layout_constraintEnd_toEndOf="@+id/modificarNota"
+            app:layout_constraintHorizontal_bias="0.511"
+            app:layout_constraintStart_toStartOf="@+id/modificarNota"
+            tools:layout_editor_absoluteY="572dp" />
+
+        <Button
+            android:id="@+id/btGardar"
+            style="@style/botones"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:fontFamily="sans-serif-black"
+            android:text="@string/btSave"
+            android:textColor="@color/colorTexto"
+            app:layout_constraintEnd_toEndOf="@+id/modificarNota"
+            app:layout_constraintHorizontal_bias="0.508"
+            app:layout_constraintStart_toStartOf="@+id/modificarNota"
+            tools:layout_editor_absoluteY="508dp" />
+
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 </layout>

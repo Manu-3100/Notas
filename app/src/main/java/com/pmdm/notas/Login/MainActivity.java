@@ -42,7 +42,6 @@ public class MainActivity extends AppCompatActivity {
                 comprobarUsuario();
             }
         });
-
         // evento al clicar en registrar:
         Button botonRegistrar = findViewById(R.id.btRexistrarse);
         botonRegistrar.setOnClickListener(new View.OnClickListener() {
@@ -51,7 +50,6 @@ public class MainActivity extends AppCompatActivity {
                 anadirUsuario();
             }
         });
-
         // revisar que los datos introducidos estén bien introducidos.
         // revisar si está registrado o no (mirar si está dentro de la lista)
         // si no está registrado sacar un toast y pedir que se registre.
@@ -60,7 +58,8 @@ public class MainActivity extends AppCompatActivity {
     private void generarListaUsuarios(){
         usuariosList = new ArrayList<>();
         usuariosList.add(new Usuario("nadir","nadir1234"));
-        usuariosList.add(new Usuario("Aroa","abc123."));
+        usuariosList.add(new Usuario("aroa","abc123."));
+        usuariosList.add(new Usuario("manolo", "gallego"));
     }
 
     public void comprobarUsuario(){
@@ -68,54 +67,49 @@ public class MainActivity extends AppCompatActivity {
         String usuario = user.getText().toString().trim();
         String contrasinal = pass.getText().toString().trim();
 
+        // boleanos para comprobar que usuario y contraseña existen.
+        Boolean usuarioExiste = false;
+        Boolean contrasinalExiste = false;
+
+        // este toast es por si no completa bien todos los campos.
+        if (usuario.isEmpty() || contrasinal.isEmpty()){
+            Toast.makeText(this, "COMPLETE TODOS OS CAMPOS", Toast.LENGTH_SHORT).show();
+        }
+
         // recorrer la lista para ver si usuario existe o no y contraseña existen
         for (Usuario persona : usuariosList){
-            // este toast es por si no completa bien todos los campos.
-            if (usuario.isEmpty() || contrasinal.isEmpty()){
-                Toast.makeText(this, "COMPLETE TODOS OS CAMPOS", Toast.LENGTH_SHORT).show();
-                break;
+            if (persona.getNome().equals(usuario)){
+                usuarioExiste = true;
             }
-            // comprobar si contraseña y usuario son correctos:
-            else if (persona.getNome().equals(usuario) && !persona.getContrasinal().equals(contrasinal)) {
-                Toast.makeText(this, "CONTRASINAL INCORRECTO", Toast.LENGTH_SHORT).show();
-                break;
+            if (persona.getContrasinal().equals(contrasinal)){
+                contrasinalExiste = true;
             }
-            else if (!persona.getNome().equals(usuario) && persona.getContrasinal().equals(contrasinal)){
-                Toast.makeText(this, "USUARIO INCORRECTO", Toast.LENGTH_SHORT).show();
-                break;
-            }
-
             // si el usuario y la contraseña son correctos tiene que iniciar la actividad.
-            else if (persona.getNome().equals(usuario) && persona.getContrasinal().equals(contrasinal)){
+            if (usuarioExiste && contrasinalExiste){
                 Intent intent = new Intent(MainActivity.this, NotasActivity.class);
                 intent.putExtra("usuario", usuario);
                 startActivity(intent);
-
                 Toast.makeText(this, "ACCEDIENDO...", Toast.LENGTH_SHORT).show();
                 break;
             }
-
-            // si el usuario y la contraseña no coinciden decirle que usuario no existe.
-            else if (!persona.getNome().equals(usuario) && !persona.getContrasinal().equals(contrasinal)){
-                Toast.makeText(this, "USUARIO NON EXISTE", Toast.LENGTH_SHORT).show();
-                break;
-            }
-            return;
         }
-
+        // compruebo la contraseña si está correcta o no.
+        // si el usuario y la contraseña no coinciden decirle que usuario no existe.
+        if (usuarioExiste && !contrasinalExiste){
+            Toast.makeText(this, "CONTRASINAL INCORRECTO", Toast.LENGTH_SHORT).show();
+        }
+        else if (!usuarioExiste){
+            Toast.makeText(this, "USUARIO NON EXISTE", Toast.LENGTH_SHORT).show();
+        }
         // vaciar los campos de texto
         user.setText("");
         pass.setText("");
-
     }
-
     public void anadirUsuario(){
         // cogemos la información que nos ha introducido el usuario.
         String usuario = user.getText().toString().trim();
         String contrasinal = pass.getText().toString().trim();
-
         // recorremos la lista para comprobar que realmente ese usuario no existe:
-
         for (Usuario persona : usuariosList){
             if (usuario.isEmpty() || contrasinal.isEmpty()){
                 Toast.makeText(this, "COMPLETE TODOS OS CAMPOS", Toast.LENGTH_SHORT).show();
@@ -143,7 +137,6 @@ public class MainActivity extends AppCompatActivity {
                 break;
             }
         }
-
         // vaciar los campos de texto
         user.setText("");
         pass.setText("");
