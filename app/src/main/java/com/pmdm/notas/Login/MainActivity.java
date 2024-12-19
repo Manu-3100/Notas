@@ -2,6 +2,7 @@ package com.pmdm.notas.Login;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.text.method.HideReturnsTransformationMethod;
 import android.text.method.PasswordTransformationMethod;
 import android.view.MotionEvent;
 import android.view.View;
@@ -49,7 +50,7 @@ public class MainActivity extends AppCompatActivity {
                 // indice del drawable de la derecha:
                 int drawableDerecha = 2;
                 if (event.getRawX() >= (pass.getRight() - pass.getCompoundDrawables()[drawableDerecha].getBounds().width())){
-                    alternadorContraseña();
+                    alternadorContrasena();
                     return true;
                 }
             }
@@ -165,19 +166,25 @@ public class MainActivity extends AppCompatActivity {
 
     // alternar entre visible y inivisible
 
-    private void alternadorContraseña(){
-        if (contraseñaVisible){
-            // si está visible la ocultamos:
+    private void alternadorContrasena() {
+        if (contraseñaVisible) {
+            // Si la contraseña está visible, la ocultamos:
+            // Oculta la contraseña
             pass.setTransformationMethod(PasswordTransformationMethod.getInstance());
-            pass.setCompoundDrawablesRelativeWithIntrinsicBounds(0,0,R.drawable.ic_visible,0);
+            // Ojo cerrado
+            pass.setCompoundDrawablesRelativeWithIntrinsicBounds(0, 0, R.drawable.ic_visible, 0);
+        } else {
+            // si está en invisible la hacemos visible
+            // enseñamos contraseña
+            pass.setTransformationMethod(HideReturnsTransformationMethod.getInstance());
+            // Ojo abierto
+            pass.setCompoundDrawablesRelativeWithIntrinsicBounds(0, 0, R.drawable.ic_invisible, 0);
         }
-        else {
-            // si está invisible la mostramos y ponemos el ojo cerrado:
-            pass.setTransformationMethod(PasswordTransformationMethod.getInstance());
-            pass.setCompoundDrawablesRelativeWithIntrinsicBounds(0,0,R.drawable.ic_invisible,0);
-        }
+        // Cambia el estado de la visibilidad de la contraseña:
         contraseñaVisible = !contraseñaVisible;
-        // para que el cursor se quede al final de todo:
+
+        // Para que el cursor se quede al final detodo:
         pass.setSelection(pass.getText().length());
     }
+
 }
