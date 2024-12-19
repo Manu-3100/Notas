@@ -7,6 +7,7 @@ public class Nota implements Serializable {
     private String data;
     private String modulo;
     private String imaxe;
+    private String texto;
 
     public Nota(String titulo, String data, String modulo) {
         this.titulo = titulo;
@@ -14,12 +15,6 @@ public class Nota implements Serializable {
         this.modulo = modulo;
     }
 
-    public Nota(String titulo, String imaxe, String modulo, String data) {
-        this.titulo = titulo;
-        this.imaxe = imaxe;
-        this.modulo = modulo;
-        this.data = data;
-    }
 
     public String getTitulo() {
         return titulo;
@@ -53,4 +48,11 @@ public class Nota implements Serializable {
         this.imaxe = imaxe;
     }
 
+    public String getTexto() {
+        return texto;
+    }
+
+    public void setTexto(String texto) {
+        this.texto = texto;
+    }
 }

@@ -20,6 +20,7 @@ public class NotaAmpliada extends AppCompatActivity {
     private EditText etTitulo;
     private EditText etData;
     private EditText etModulo;
+    private EditText etTexto;
     private Button btGardar;
     private Button btCancelar;
     Nota nota;
@@ -34,6 +35,7 @@ public class NotaAmpliada extends AppCompatActivity {
         etTitulo = (EditText) findViewById(R.id.cambiarTitulo);
         etData = (EditText) findViewById(R.id.cambiarData);
         etModulo = (EditText) findViewById(R.id.cambiarModulo);
+        etTexto = (EditText) findViewById(R.id.etTexto);
         btGardar = (Button) findViewById(R.id.btGardar);
         btCancelar = (Button) findViewById(R.id.btCancelar);
 
@@ -45,6 +47,7 @@ public class NotaAmpliada extends AppCompatActivity {
         etTitulo.setText(nota.getTitulo());
         etData.setText(nota.getData());
         etModulo.setText(nota.getModulo());
+        etTexto.setText(nota.getTexto());
 
         btGardar.setOnClickListener(view -> gardarClick(nota));
         btCancelar.setOnClickListener(view -> cancelarClick(nota));
@@ -59,12 +62,12 @@ public class NotaAmpliada extends AppCompatActivity {
             nota.setTitulo(etTitulo.getText().toString());
             nota.setData(etData.getText().toString());
             nota.setModulo(etModulo.getText().toString());
+            nota.setTexto(etTexto.getText().toString());
 
             //devolver datos...
             datos_volta.putExtra("nota", (Serializable) nota);
             datos_volta.putExtra("posicion", position);
             setResult(RESULT_OK, datos_volta);
-
 
             super.finish();
         } else {

@@ -46,7 +46,7 @@
             android:layout_marginTop="30dp"
             android:ems="10"
             android:hint="@string/data"
-            android:inputType="text"
+            android:inputType="date"
             android:textColor="@color/colorTexto"
             android:textColorHint="@color/colorHint"
             app:layout_constraintStart_toStartOf="@+id/cambiarTitulo"

@@ -24,6 +24,7 @@
         android:layout_height="wrap_content"
         android:hint="@string/tituloNota"
         android:textColorHint="@color/colorHint"
+        android:textColor="@color/colorTexto"
         android:inputType="text" />
     <EditText
         android:id="@+id/dfData"
@@ -31,6 +32,7 @@
         android:layout_height="wrap_content"
         android:hint="@string/data"
         android:textColorHint="@color/colorHint"
+        android:textColor="@color/colorTexto"
         android:inputType="date" />
     <EditText
         android:id="@+id/dfModulo"
@@ -38,6 +40,7 @@
         android:layout_height="wrap_content"
         android:inputType="text"
         android:textColorHint="@color/colorHint"
+        android:textColor="@color/colorTexto"
         android:hint="@string/modulo" />
 
     <!-- Botones de acción -->

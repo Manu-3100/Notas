@@ -108,6 +108,7 @@ public class NotasActivity extends AppCompatActivity implements AddNotaDF.AddNot
                 notasList.get(position).setTitulo(nota.getTitulo());
                 notasList.get(position).setData(nota.getData());
                 notasList.get(position).setModulo(nota.getModulo());
+                notasList.get(position).setTexto(nota.getTexto());
                 adapter.notifyItemChanged(position);
 
             }
