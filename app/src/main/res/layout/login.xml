@@ -61,6 +61,7 @@
                     app:layout_constraintStart_toStartOf="@+id/txvLogin"
                     app:layout_constraintTop_toBottomOf="@+id/txvLogin" />
 
+
                 <EditText
                     android:id="@+id/etPassword"
                     android:layout_width="wrap_content"
@@ -75,10 +76,12 @@
                     android:inputType="textPassword"
                     android:padding="12dp"
                     style="@style/editT"
+                    android:drawableRight="@drawable/ic_visible"
                     app:layout_constraintEnd_toEndOf="@+id/txvLogin"
                     app:layout_constraintHorizontal_bias="0.45"
                     app:layout_constraintStart_toStartOf="@+id/txvLogin"
                     app:layout_constraintTop_toBottomOf="@+id/etNome" />
+
 
                 <Button
                     android:id="@+id/btAcceder"
