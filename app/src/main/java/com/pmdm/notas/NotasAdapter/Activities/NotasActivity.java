@@ -61,8 +61,12 @@ public class NotasActivity extends AppCompatActivity implements AddNotaDF.AddNot
         binding.rvNota.setLayoutManager(new LinearLayoutManager(this));
 
         notasList = new ArrayList<Nota>();
-        notasList.add(new Nota("A saber", "onte", "pmdm"));
-        notasList.add(new Nota("quen sabe", "antonte", "psp"));
+        notasList.add(new Nota("Binding", "15/11/2024", "pmdm"));
+        notasList.add(new Nota("ProccesBuilder", "20/09/2024", "psp"));
+        notasList.add(new Nota("XML", "15/11/2024", "acda"));
+        notasList.add(new Nota("JSON", "01/12/2024", "acda"));
+        notasList.add(new Nota("Tragaperras", "10/11/2024", "dein"));
+        notasList.add(new Nota("", "", ""));
         ejecutarRecycler();
         adminFAB();
     }
