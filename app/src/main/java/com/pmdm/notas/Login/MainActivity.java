@@ -32,7 +32,6 @@ public class MainActivity extends AppCompatActivity {
     // para mostrar o no la contraseña
     private boolean contraseñaVisible = false;
 
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -99,8 +98,6 @@ public class MainActivity extends AppCompatActivity {
             Toast.makeText(this, "COMPLETE TODOS OS CAMPOS", Toast.LENGTH_SHORT).show();
         }
 
-
-
         // recorrer la lista para ver si usuario existe o no y contraseña existen
         for (Usuario persona : usuariosList){
             if (persona.getNome().equals(usuario)){
@@ -114,7 +111,7 @@ public class MainActivity extends AppCompatActivity {
                 Intent intent = new Intent(MainActivity.this, NotasActivity.class);
                 intent.putExtra("usuario", usuario);
                 startActivity(intent);
-                Toast.makeText(this, "ACCEDIENDO...", Toast.LENGTH_SHORT).show();
+                Toast.makeText(this, "ACCEDENDO...", Toast.LENGTH_SHORT).show();
                 break;
             }
         }
@@ -146,7 +143,6 @@ public class MainActivity extends AppCompatActivity {
                     break;
                 }
 
-
                 else if (!persona.getNome().equals(usuario)){
                     // añadir usuario nuevo a la lista
                     usuariosList.add(new Usuario(usuario,contrasinal));
@@ -162,7 +158,6 @@ public class MainActivity extends AppCompatActivity {
 
                     Toast.makeText(this, "USUARIO NOVO AÑADIDO", Toast.LENGTH_SHORT).show();
                     break;
-
                 }
                 else if (persona.getNome().equals(usuario)){
                     Toast.makeText(this, "USUARIO XA EXISTENTE", Toast.LENGTH_SHORT).show();
@@ -177,7 +172,6 @@ public class MainActivity extends AppCompatActivity {
     }
 
     // alternar entre visible y inivisible
-
     private void alternadorContrasena() {
         if (contraseñaVisible) {
             // Si la contraseña está visible, la ocultamos:
@@ -198,5 +192,4 @@ public class MainActivity extends AppCompatActivity {
         // Para que el cursor se quede al final detodo:
         pass.setSelection(pass.getText().length());
     }
-
 }
