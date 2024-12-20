@@ -82,7 +82,7 @@ public class MainActivity extends AppCompatActivity {
         usuariosList.add(new Usuario("nadir","nadir1234"));
         usuariosList.add(new Usuario("aroa","abc123."));
         usuariosList.add(new Usuario("manolo", "gallego"));
-        usuariosList.add(new Usuario("a", "a"));
+        usuariosList.add(new Usuario("administrador", "admin123."));
     }
 
     public void comprobarUsuario(){
@@ -98,6 +98,10 @@ public class MainActivity extends AppCompatActivity {
         if (usuario.isEmpty() || contrasinal.isEmpty()){
             Toast.makeText(this, "COMPLETE TODOS OS CAMPOS", Toast.LENGTH_SHORT).show();
         }
+        else if (contrasinal.length() < 8){
+            Toast.makeText(this, "CONTRASINAL NON E SEGURO", Toast.LENGTH_SHORT).show();
+        }
+
 
         // recorrer la lista para ver si usuario existe o no y contraseña existen
         for (Usuario persona : usuariosList){
