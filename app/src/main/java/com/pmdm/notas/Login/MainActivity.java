@@ -165,7 +165,6 @@ public class MainActivity extends AppCompatActivity {
                 }
             }
         }
-
         // vaciar los campos de texto
         user.setText("");
         pass.setText("");

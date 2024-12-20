@@ -4,6 +4,8 @@ import android.content.Context;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.CheckBox;
+import android.widget.Checkable;
 import android.widget.ImageView;
 import android.widget.TextView;
 
@@ -53,9 +55,9 @@ public class NotasAdapter extends RecyclerView.Adapter<NotasAdapter.NotasAdapter
                 return false;
         });
 
-//        if(){
-//
-//        }
+        if(holder.cbxBorrar.isChecked()){
+            holder.mitem.setEliminar(true);
+        }
 
         if (holder.tvModulo.getText().equals("acda")){
             holder.ivImaxe.setImageResource(R.drawable.acda);
@@ -84,8 +86,8 @@ public class NotasAdapter extends RecyclerView.Adapter<NotasAdapter.NotasAdapter
         public final TextView tvData;
         public final TextView tvModulo;
         public final ImageView ivImaxe;
+        public final CheckBox cbxBorrar;
         public Nota mitem = null;
-
         public NotasAdapterHolder(View view){
             super(view);
             vista = view;
@@ -93,13 +95,12 @@ public class NotasAdapter extends RecyclerView.Adapter<NotasAdapter.NotasAdapter
             tvTitulo = (TextView) view.findViewById(R.id.tvTitulo);
             tvData = (TextView) view.findViewById(R.id.tvData);
             tvModulo = (TextView) view.findViewById(R.id.tvModulo);
+            cbxBorrar = (CheckBox) view.findViewById(R.id.cbxEliminar);
         }
         @Override
         public String toString() {
             return super.toString() + "\t" + tvTitulo.getText() + "\t";
         }
-
-
     }
     public interface OnItemClickListener{
         void onItemClick(int position);

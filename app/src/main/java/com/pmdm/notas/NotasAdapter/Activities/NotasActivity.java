@@ -42,10 +42,8 @@ public class NotasActivity extends AppCompatActivity implements AddNotaDF.AddNot
 
     // creamos unha variable para gardar o nome do usuario co que se inicia
     String usuario;
-
     //codigo para recibir os datos da nota modificada
     private static final int COD_PETICION = 33;
-
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
@@ -57,7 +55,6 @@ public class NotasActivity extends AppCompatActivity implements AddNotaDF.AddNot
 
         // Asignamos a toolbar á action bar
         setSupportActionBar(binding.toolbar);
-
         binding.rvNota.setLayoutManager(new LinearLayoutManager(this));
 
         notasList = new ArrayList<Nota>();
@@ -86,6 +83,17 @@ public class NotasActivity extends AppCompatActivity implements AddNotaDF.AddNot
             return true;
         }
         if(id == R.id.EliminarNota){
+//            notasList.forEach(n ->{
+//
+//            });
+
+            for(int i = 0; i < notasList.size(); i++){
+                if(notasList.get(i).isEliminar()){
+                    notasList.remove(notasList.get(i));
+                    adapter.notifyItemRemoved(i);
+                }
+            }
+
             Toast.makeText(this, "ELIMINAR NOTA",Toast.LENGTH_SHORT).show();
             return true;
         }
