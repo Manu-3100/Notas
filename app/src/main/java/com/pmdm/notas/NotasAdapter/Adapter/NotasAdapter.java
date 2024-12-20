@@ -39,7 +39,7 @@ public class NotasAdapter extends RecyclerView.Adapter<NotasAdapter.NotasAdapter
         holder.tvTitulo.setText(holder.mitem.getTitulo());
         holder.tvData.setText(holder.mitem.getData());
         holder.tvModulo.setText(holder.mitem.getModulo());
-        holder.
+        // holder.
         holder.itemView.setOnClickListener(view -> {
             if(notaListener != null){
                 notaListener.onItemClick(position);
@@ -53,11 +53,25 @@ public class NotasAdapter extends RecyclerView.Adapter<NotasAdapter.NotasAdapter
                 return false;
         });
 
-        if(){
+//        if(){
+//
+//        }
 
+        if (holder.tvModulo.getText().equals("acda")){
+            holder.ivImaxe.setImageResource(R.drawable.acda);
         }
-
-
+        else if(holder.tvModulo.getText().equals("pmdm")){
+            holder.ivImaxe.setImageResource(R.drawable.pmdm);
+        }
+        else if(holder.tvModulo.getText().equals("dein")){
+            holder.ivImaxe.setImageResource(R.drawable.dein);
+        }
+        else if(holder.tvModulo.getText().equals("psp")){
+            holder.ivImaxe.setImageResource(R.drawable.psp);
+        }
+        else{
+            holder.ivImaxe.setImageResource(R.drawable.negacion);
+        }
 
     }
     @Override
@@ -84,6 +98,8 @@ public class NotasAdapter extends RecyclerView.Adapter<NotasAdapter.NotasAdapter
         public String toString() {
             return super.toString() + "\t" + tvTitulo.getText() + "\t";
         }
+
+
     }
     public interface OnItemClickListener{
         void onItemClick(int position);
