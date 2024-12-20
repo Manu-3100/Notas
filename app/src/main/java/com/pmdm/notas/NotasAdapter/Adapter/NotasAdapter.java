@@ -37,10 +37,13 @@ public class NotasAdapter extends RecyclerView.Adapter<NotasAdapter.NotasAdapter
     }
 
     public void onBindViewHolder(@NonNull NotasAdapterHolder holder, int position){
+        Nota nota = lNota.get(position);
         holder.mitem = lNota.get(position);
         holder.tvTitulo.setText(holder.mitem.getTitulo());
         holder.tvData.setText(holder.mitem.getData());
         holder.tvModulo.setText(holder.mitem.getModulo());
+        // estado inicial de checkBox:
+        holder.cbxBorrar.setChecked(holder.mitem.isEliminar());
         // holder.
         holder.itemView.setOnClickListener(view -> {
             if(notaListener != null){
@@ -58,6 +61,11 @@ public class NotasAdapter extends RecyclerView.Adapter<NotasAdapter.NotasAdapter
         if(holder.cbxBorrar.isChecked()){
             holder.mitem.setEliminar(true);
         }
+
+        // actualizar "eliminar" cuando cambie chekBox su estado:
+        holder.cbxBorrar.setOnCheckedChangeListener((buttonView, isChecked) -> {
+           nota.setEliminar(isChecked);
+        });
 
         if (holder.tvModulo.getText().equals("acda")){
             holder.ivImaxe.setImageResource(R.drawable.acda);

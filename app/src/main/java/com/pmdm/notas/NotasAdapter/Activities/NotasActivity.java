@@ -26,6 +26,7 @@ import com.pmdm.notas.databinding.NotasReciclerBinding;
 
 import java.io.Serializable;
 import java.util.ArrayList;
+import java.util.Iterator;
 import java.util.List;
 
 public class NotasActivity extends AppCompatActivity implements AddNotaDF.AddNotaDialogListener{
@@ -83,17 +84,23 @@ public class NotasActivity extends AppCompatActivity implements AddNotaDF.AddNot
             return true;
         }
         if(id == R.id.EliminarNota){
-//            notasList.forEach(n ->{
-//
-//            });
+            // creamos iterador para nuestra lista, para no tener problemas con el índice luego.
+            Iterator<Nota> it = notasList.iterator();
 
-            for(int i = 0; i < notasList.size(); i++){
-                if(notasList.get(i).isEliminar()){
-                    notasList.remove(notasList.get(i));
-                    adapter.notifyItemRemoved(i);
+            // bucle mientras haya notas en la lista.
+            while(it.hasNext()){
+                // siguiente elemento.
+                Nota nota = it.next();
+                // se mira si tiene checkbox
+                if (nota.isEliminar()){
+                    // devolvemos la posición actual de la nota en la lista
+                    int position = notasList.indexOf(nota);
+                    // la borramos.
+                    it.remove();
+                    // notificamos al adapter.
+                    adapter.notifyItemRemoved(position);
                 }
             }
-
             Toast.makeText(this, "ELIMINAR NOTA",Toast.LENGTH_SHORT).show();
             return true;
         }
