@@ -39,7 +39,6 @@ public class NotasAdapter extends RecyclerView.Adapter<NotasAdapter.NotasAdapter
         holder.tvTitulo.setText(holder.mitem.getTitulo());
         holder.tvData.setText(holder.mitem.getData());
         holder.tvModulo.setText(holder.mitem.getModulo());
-        holder.
         holder.itemView.setOnClickListener(view -> {
             if(notaListener != null){
                 notaListener.onItemClick(position);
@@ -52,12 +51,6 @@ public class NotasAdapter extends RecyclerView.Adapter<NotasAdapter.NotasAdapter
             } else
                 return false;
         });
-
-        if(){
-
-        }
-
-
 
     }
     @Override
