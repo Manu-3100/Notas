@@ -81,16 +81,16 @@ public class NotasActivity extends AppCompatActivity implements AddNotaDF.AddNot
         int id = item.getItemId();
 
         if(id == R.id.EngadirNota){
-            Toast.makeText(this, "Añadir nota", Toast.LENGTH_SHORT).show();
+            Toast.makeText(this, "ENGADIR NOTA", Toast.LENGTH_SHORT).show();
             df_fab();
             return true;
         }
         if(id == R.id.EliminarNota){
-            Toast.makeText(this, "Eliminar nota",Toast.LENGTH_SHORT).show();
+            Toast.makeText(this, "ELIMINAR NOTA",Toast.LENGTH_SHORT).show();
             return true;
         }
         if(id == R.id.CerrarSesion){
-            Toast.makeText(this, "Cerrar sesión",Toast.LENGTH_SHORT).show();
+            Toast.makeText(this, "CERRAR SESIÓN",Toast.LENGTH_SHORT).show();
             Intent intent = new Intent(NotasActivity.this, MainActivity.class);
             startActivity(intent);
             finish();
@@ -106,7 +106,7 @@ public class NotasActivity extends AppCompatActivity implements AddNotaDF.AddNot
         Nota nota;
         if(requestCode == COD_PETICION){
             if(resultCode == RESULT_OK){
-                Toast.makeText(this, "Cambiando datos...", Toast.LENGTH_SHORT).show();
+                //Toast.makeText(this, "Cambiando datos...", Toast.LENGTH_SHORT).show();
                 position = data.getIntExtra("posicion", 0);
                 nota = (Nota) data.getSerializableExtra("nota");
                 notasList.get(position).setTitulo(nota.getTitulo());
@@ -116,11 +116,11 @@ public class NotasActivity extends AppCompatActivity implements AddNotaDF.AddNot
                 adapter.notifyItemChanged(position);
             }
             else{
-                Toast.makeText(this, "Houbo algún erro na execución", Toast.LENGTH_SHORT).show();
+                Toast.makeText(this, "ERRO NA EXECUCIÓN", Toast.LENGTH_SHORT).show();
             }
         }
         else{
-            Toast.makeText(this, "Houbo algún erro na execución", Toast.LENGTH_SHORT).show();
+            Toast.makeText(this, "ERRO NA EXECUCIÓN", Toast.LENGTH_SHORT).show();
         }
     }
     public void ejecutarRecycler(){
@@ -139,7 +139,7 @@ public class NotasActivity extends AppCompatActivity implements AddNotaDF.AddNot
         }, new NotasAdapter.OnItemLongClickListener() {
             @Override
             public void onItemLongClick(int position) {
-                Toast.makeText(NotasActivity.this, "Long click", Toast.LENGTH_SHORT).show();
+                Toast.makeText(NotasActivity.this, "LONG CLICK", Toast.LENGTH_SHORT).show();
             }
         });
         // asignamos o adaptador ao recycler view
@@ -170,7 +170,7 @@ public class NotasActivity extends AppCompatActivity implements AddNotaDF.AddNot
         notasList.add(novaNota);
         adapter.notifyItemInserted(notasList.size() - 1);
         // Mostrar mensaxe de éxito
-        Toast.makeText(this, "Nota agregada: "+ titulo.getText().toString(), Toast.LENGTH_SHORT).show();
+        Toast.makeText(this, "NOTA AGREGADA: "+ titulo.getText().toString(), Toast.LENGTH_SHORT).show();
     }
 
 }
