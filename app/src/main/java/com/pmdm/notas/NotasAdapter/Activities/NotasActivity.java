@@ -26,7 +26,6 @@ import com.pmdm.notas.databinding.NotasReciclerBinding;
 
 import java.io.Serializable;
 import java.util.ArrayList;
-import java.util.Iterator;
 import java.util.List;
 
 public class NotasActivity extends AppCompatActivity implements AddNotaDF.AddNotaDialogListener{
@@ -43,8 +42,10 @@ public class NotasActivity extends AppCompatActivity implements AddNotaDF.AddNot
 
     // creamos unha variable para gardar o nome do usuario co que se inicia
     String usuario;
+
     //codigo para recibir os datos da nota modificada
     private static final int COD_PETICION = 33;
+
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
@@ -56,15 +57,12 @@ public class NotasActivity extends AppCompatActivity implements AddNotaDF.AddNot
 
         // Asignamos a toolbar á action bar
         setSupportActionBar(binding.toolbar);
+
         binding.rvNota.setLayoutManager(new LinearLayoutManager(this));
 
         notasList = new ArrayList<Nota>();
-        notasList.add(new Nota("Binding", "15/11/2024", "pmdm"));
-        notasList.add(new Nota("ProccesBuilder", "20/09/2024", "psp"));
-        notasList.add(new Nota("XML", "15/11/2024", "acda"));
-        notasList.add(new Nota("JSON", "01/12/2024", "acda"));
-        notasList.add(new Nota("Tragaperras", "10/11/2024", "dein"));
-        notasList.add(new Nota("", "", ""));
+        notasList.add(new Nota("A saber", "onte", "pmdm"));
+        notasList.add(new Nota("quen sabe", "antonte", "psp"));
         ejecutarRecycler();
         adminFAB();
     }
@@ -79,33 +77,16 @@ public class NotasActivity extends AppCompatActivity implements AddNotaDF.AddNot
         int id = item.getItemId();
 
         if(id == R.id.EngadirNota){
-            Toast.makeText(this, "ENGADIR NOTA", Toast.LENGTH_SHORT).show();
+            Toast.makeText(this, "Añadir nota", Toast.LENGTH_SHORT).show();
             df_fab();
             return true;
         }
         if(id == R.id.EliminarNota){
-            // creamos iterador para nuestra lista, para no tener problemas con el índice luego.
-            Iterator<Nota> it = notasList.iterator();
-
-            // bucle mientras haya notas en la lista.
-            while(it.hasNext()){
-                // siguiente elemento.
-                Nota nota = it.next();
-                // se mira si tiene checkbox
-                if (nota.isEliminar()){
-                    // devolvemos la posición actual de la nota en la lista
-                    int position = notasList.indexOf(nota);
-                    // la borramos.
-                    it.remove();
-                    // notificamos al adapter.
-                    adapter.notifyItemRemoved(position);
-                }
-            }
-            Toast.makeText(this, "ELIMINAR NOTA",Toast.LENGTH_SHORT).show();
+            Toast.makeText(this, "Eliminar nota",Toast.LENGTH_SHORT).show();
             return true;
         }
         if(id == R.id.CerrarSesion){
-            Toast.makeText(this, "CERRAR SESIÓN",Toast.LENGTH_SHORT).show();
+            Toast.makeText(this, "Cerrar sesión",Toast.LENGTH_SHORT).show();
             Intent intent = new Intent(NotasActivity.this, MainActivity.class);
             startActivity(intent);
             finish();
@@ -121,7 +102,7 @@ public class NotasActivity extends AppCompatActivity implements AddNotaDF.AddNot
         Nota nota;
         if(requestCode == COD_PETICION){
             if(resultCode == RESULT_OK){
-                //Toast.makeText(this, "Cambiando datos...", Toast.LENGTH_SHORT).show();
+                Toast.makeText(this, "Cambiando datos...", Toast.LENGTH_SHORT).show();
                 position = data.getIntExtra("posicion", 0);
                 nota = (Nota) data.getSerializableExtra("nota");
                 notasList.get(position).setTitulo(nota.getTitulo());
@@ -131,11 +112,11 @@ public class NotasActivity extends AppCompatActivity implements AddNotaDF.AddNot
                 adapter.notifyItemChanged(position);
             }
             else{
-                Toast.makeText(this, "ERRO NA EXECUCIÓN", Toast.LENGTH_SHORT).show();
+                Toast.makeText(this, "Houbo algún erro na execución", Toast.LENGTH_SHORT).show();
             }
         }
         else{
-            Toast.makeText(this, "ERRO NA EXECUCIÓN", Toast.LENGTH_SHORT).show();
+            Toast.makeText(this, "Houbo algún erro na execución", Toast.LENGTH_SHORT).show();
         }
     }
     public void ejecutarRecycler(){
@@ -154,7 +135,7 @@ public class NotasActivity extends AppCompatActivity implements AddNotaDF.AddNot
         }, new NotasAdapter.OnItemLongClickListener() {
             @Override
             public void onItemLongClick(int position) {
-                Toast.makeText(NotasActivity.this, "LONG CLICK", Toast.LENGTH_SHORT).show();
+                Toast.makeText(NotasActivity.this, "Long click", Toast.LENGTH_SHORT).show();
             }
         });
         // asignamos o adaptador ao recycler view
@@ -185,7 +166,7 @@ public class NotasActivity extends AppCompatActivity implements AddNotaDF.AddNot
         notasList.add(novaNota);
         adapter.notifyItemInserted(notasList.size() - 1);
         // Mostrar mensaxe de éxito
-        Toast.makeText(this, "NOTA AGREGADA: "+ titulo.getText().toString(), Toast.LENGTH_SHORT).show();
+        Toast.makeText(this, "Nota agregada: "+ titulo.getText().toString(), Toast.LENGTH_SHORT).show();
     }
 
 }

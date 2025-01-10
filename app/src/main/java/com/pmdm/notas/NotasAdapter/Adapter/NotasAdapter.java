@@ -4,8 +4,6 @@ import android.content.Context;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.CheckBox;
-import android.widget.Checkable;
 import android.widget.ImageView;
 import android.widget.TextView;
 
@@ -37,14 +35,11 @@ public class NotasAdapter extends RecyclerView.Adapter<NotasAdapter.NotasAdapter
     }
 
     public void onBindViewHolder(@NonNull NotasAdapterHolder holder, int position){
-        Nota nota = lNota.get(position);
         holder.mitem = lNota.get(position);
         holder.tvTitulo.setText(holder.mitem.getTitulo());
         holder.tvData.setText(holder.mitem.getData());
         holder.tvModulo.setText(holder.mitem.getModulo());
-        // estado inicial de checkBox:
-        holder.cbxBorrar.setChecked(holder.mitem.isEliminar());
-        // holder.
+
         holder.itemView.setOnClickListener(view -> {
             if(notaListener != null){
                 notaListener.onItemClick(position);
@@ -57,32 +52,6 @@ public class NotasAdapter extends RecyclerView.Adapter<NotasAdapter.NotasAdapter
             } else
                 return false;
         });
-
-        if(holder.cbxBorrar.isChecked()){
-            holder.mitem.setEliminar(true);
-        }
-
-        // actualizar "eliminar" cuando cambie chekBox su estado:
-        holder.cbxBorrar.setOnCheckedChangeListener((buttonView, isChecked) -> {
-           nota.setEliminar(isChecked);
-        });
-
-        if (holder.tvModulo.getText().equals("acda")){
-            holder.ivImaxe.setImageResource(R.drawable.acda);
-        }
-        else if(holder.tvModulo.getText().equals("pmdm")){
-            holder.ivImaxe.setImageResource(R.drawable.pmdm);
-        }
-        else if(holder.tvModulo.getText().equals("dein")){
-            holder.ivImaxe.setImageResource(R.drawable.dein);
-        }
-        else if(holder.tvModulo.getText().equals("psp")){
-            holder.ivImaxe.setImageResource(R.drawable.psp);
-        }
-        else{
-            holder.ivImaxe.setImageResource(R.drawable.negacion);
-        }
-
     }
     @Override
     public int getItemCount(){
@@ -94,8 +63,8 @@ public class NotasAdapter extends RecyclerView.Adapter<NotasAdapter.NotasAdapter
         public final TextView tvData;
         public final TextView tvModulo;
         public final ImageView ivImaxe;
-        public final CheckBox cbxBorrar;
         public Nota mitem = null;
+
         public NotasAdapterHolder(View view){
             super(view);
             vista = view;
@@ -103,7 +72,6 @@ public class NotasAdapter extends RecyclerView.Adapter<NotasAdapter.NotasAdapter
             tvTitulo = (TextView) view.findViewById(R.id.tvTitulo);
             tvData = (TextView) view.findViewById(R.id.tvData);
             tvModulo = (TextView) view.findViewById(R.id.tvModulo);
-            cbxBorrar = (CheckBox) view.findViewById(R.id.cbxEliminar);
         }
         @Override
         public String toString() {

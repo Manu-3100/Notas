@@ -9,7 +9,6 @@ import android.widget.Toast;
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 
-import com.google.android.material.floatingactionbutton.FloatingActionButton;
 import com.pmdm.notas.NotasAdapter.Activities.NotasActivity;
 import com.pmdm.notas.R;
 
@@ -52,29 +51,13 @@ public class NotaAmpliada extends AppCompatActivity {
 
         btGardar.setOnClickListener(view -> gardarClick(nota));
         btCancelar.setOnClickListener(view -> cancelarClick(nota));
-
-        // el floating button para volver para atrás:
-        FloatingActionButton goBack = findViewById(R.id.btAtras);
-
-        // configurar la función del botón BACK:
-        goBack.setOnClickListener(view -> {
-            Intent i = new Intent();
-            Toast.makeText(this, "CAMBIOS NON GARDADOS", Toast.LENGTH_SHORT).show();
-
-            //devolver datos (vacío)
-            i.putExtra("nota", (Serializable) nota);
-            i.putExtra("posicion", position);
-
-            setResult(RESULT_OK, i);
-            super.finish();
-        });
     }
 
     public void gardarClick(Nota nota){
         Intent datos_volta = new Intent();
 
         if(etTitulo.getText() != null && etData.getText() != null && etModulo.getText() != null){
-            Toast.makeText(this, "GARDANDO CAMBIOS", Toast.LENGTH_SHORT).show();
+            Toast.makeText(this, "Gardando cambios...", Toast.LENGTH_SHORT).show();
 
             nota.setTitulo(etTitulo.getText().toString());
             nota.setData(etData.getText().toString());
@@ -88,12 +71,13 @@ public class NotaAmpliada extends AppCompatActivity {
 
             super.finish();
         } else {
-            Toast.makeText(this, "COMPLETE CAMPOS", Toast.LENGTH_SHORT).show();
+            Toast.makeText(this, "Ningún campo non pode estar vacío", Toast.LENGTH_SHORT).show();
         }
     }
+
     public void cancelarClick(Nota nota){
         Intent i = new Intent();
-        Toast.makeText(this, "CANCELANDO CAMBIOS", Toast.LENGTH_SHORT).show();
+        Toast.makeText(this, "Cancelando cambios...", Toast.LENGTH_SHORT).show();
 
         //devolver datos (vacío)
         i.putExtra("nota", (Serializable) nota);

@@ -46,7 +46,7 @@ public class AddNotaDF extends DialogFragment {
                 listener.onNotaAdded(tituloNota, dataNota, moduloNota);
                 dismiss();
             } else {
-                Toast.makeText(getContext(), "COMPLETAR CAMPOS", Toast.LENGTH_SHORT).show();
+                Toast.makeText(getContext(), "O campo non pode estar vacío", Toast.LENGTH_SHORT).show();
             }
         });
 

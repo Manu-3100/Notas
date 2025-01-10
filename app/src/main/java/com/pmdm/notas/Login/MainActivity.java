@@ -32,6 +32,7 @@ public class MainActivity extends AppCompatActivity {
     // para mostrar o no la contraseña
     private boolean contraseñaVisible = false;
 
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -78,10 +79,10 @@ public class MainActivity extends AppCompatActivity {
     }
     private void generarListaUsuarios(){
         usuariosList = new ArrayList<>();
-        usuariosList.add(new Usuario("nadir","nadir12345678"));
-        usuariosList.add(new Usuario("aroa","abc12345678."));
-        usuariosList.add(new Usuario("manolo", "gallegoAB"));
-        usuariosList.add(new Usuario("administrador", "admin123."));
+        usuariosList.add(new Usuario("nadir","nadir1234"));
+        usuariosList.add(new Usuario("aroa","abc123."));
+        usuariosList.add(new Usuario("manolo", "gallego"));
+        usuariosList.add(new Usuario("a", "a"));
     }
 
     public void comprobarUsuario(){
@@ -111,7 +112,7 @@ public class MainActivity extends AppCompatActivity {
                 Intent intent = new Intent(MainActivity.this, NotasActivity.class);
                 intent.putExtra("usuario", usuario);
                 startActivity(intent);
-                Toast.makeText(this, "ACCEDENDO...", Toast.LENGTH_SHORT).show();
+                Toast.makeText(this, "ACCEDIENDO...", Toast.LENGTH_SHORT).show();
                 break;
             }
         }
@@ -131,38 +132,32 @@ public class MainActivity extends AppCompatActivity {
         // cogemos la información que nos ha introducido el usuario.
         String usuario = user.getText().toString().trim();
         String contrasinal = pass.getText().toString().trim();
+        // recorremos la lista para comprobar que realmente ese usuario no existe:
+        for (Usuario persona : usuariosList){
+            if (usuario.isEmpty() || contrasinal.isEmpty()){
+                Toast.makeText(this, "COMPLETE TODOS OS CAMPOS", Toast.LENGTH_SHORT).show();
+                break;
+            }
+            else if (!persona.getNome().equals(usuario)){
+                // añadir usuario nuevo a la lista
+                usuariosList.add(new Usuario(usuario,contrasinal));
 
-        // comprobar que contraseña sea segura:
-        if (contrasinal.length() < 8){
-            Toast.makeText(this, "CONTRASINAL NON E SEGURO", Toast.LENGTH_SHORT).show();
-        }else{
-            // recorremos la lista para comprobar que realmente ese usuario no existe:
-            for (Usuario persona : usuariosList){
-                if (usuario.isEmpty() || contrasinal.isEmpty()){
-                    Toast.makeText(this, "COMPLETE TODOS OS CAMPOS", Toast.LENGTH_SHORT).show();
-                    break;
-                }
+                // creamos nuestra actividad
+                Intent intent2 = new Intent(MainActivity.this, NotasActivity.class);
 
-                else if (!persona.getNome().equals(usuario)){
-                    // añadir usuario nuevo a la lista
-                    usuariosList.add(new Usuario(usuario,contrasinal));
+                // para que aparezca el nombre del usuario que tenga la sesión iniciada.
+                intent2.putExtra("usuario", usuario);
 
-                    // creamos nuestra actividad
-                    Intent intent2 = new Intent(MainActivity.this, NotasActivity.class);
+                // iniciar actividad:
+                startActivity(intent2);
 
-                    // para que aparezca el nombre del usuario que tenga la sesión iniciada.
-                    intent2.putExtra("usuario", usuario);
+                Toast.makeText(this, "USUARIO NOVO AÑADIDO", Toast.LENGTH_SHORT).show();
+                break;
 
-                    // iniciar actividad:
-                    startActivity(intent2);
-
-                    Toast.makeText(this, "USUARIO NOVO AÑADIDO", Toast.LENGTH_SHORT).show();
-                    break;
-                }
-                else if (persona.getNome().equals(usuario)){
-                    Toast.makeText(this, "USUARIO XA EXISTENTE", Toast.LENGTH_SHORT).show();
-                    break;
-                }
+            }
+            else if (persona.getNome().equals(usuario)){
+                Toast.makeText(this, "USUARIO XA EXISTENTE", Toast.LENGTH_SHORT).show();
+                break;
             }
         }
         // vaciar los campos de texto
@@ -171,6 +166,7 @@ public class MainActivity extends AppCompatActivity {
     }
 
     // alternar entre visible y inivisible
+
     private void alternadorContrasena() {
         if (contraseñaVisible) {
             // Si la contraseña está visible, la ocultamos:
@@ -191,4 +187,5 @@ public class MainActivity extends AppCompatActivity {
         // Para que el cursor se quede al final detodo:
         pass.setSelection(pass.getText().length());
     }
+
 }

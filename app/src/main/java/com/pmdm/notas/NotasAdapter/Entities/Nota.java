@@ -14,7 +14,6 @@ public class Nota implements Serializable {
         this.titulo = titulo;
         this.data = data;
         this.modulo = modulo;
-        this.eliminar = false;
     }
 
 
